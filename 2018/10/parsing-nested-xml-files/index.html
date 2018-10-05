@@ -406,12 +406,12 @@ def main():
     metid = child.find(&#39;accession&#39;).text
     sys.stdout.write(metid &#43; &#39;\t&#39; &#43; metname &#43; &#39;\t&#39;)
     for node in child.findall(&#39;.//secondary_accessions&#39;):
-      for snode in node.findall(&#39;accession&#39;):
-        sys.stdout.write(snode.text &#43; &#39;\t&#39;)
+      for subnode in node.findall(&#39;accession&#39;):
+        sys.stdout.write(subnode.text &#43; &#39;\t&#39;)
     print &#39;\r&#39;
     for node in child.findall(&#39;.//pathways&#39;):
-      for snode in node.getchildren():
-        pathname = snode.find(&#39;name&#39;).text
+      for subnode in node.getchildren():
+        pathname = subnode.find(&#39;name&#39;).text
         print pathname
     print &#39;\r&#39;   
      
