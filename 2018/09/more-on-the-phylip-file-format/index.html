@@ -1,6 +1,8 @@
 
 
   
+    
+  
 
 
   
@@ -18,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Yue Hao 郝樾</title>
+    <title>More on the PHYLIP file format</title>
     <meta name="author" content="Yue Hao">
     <meta name="keywords" content="">
 
@@ -34,42 +36,18 @@
     
 
     
-    <meta name="description" content="Education Ph.D. in Bioinformatics May 2020 (expected) Advisor: Dr. Gavin Conant
-North Carolina State University (NCSU), Raleigh NC, USA
-M.S. in Biological Engineering Jul 2014
-Advisor: Dr. Kevin Gillis
-University of Missouri – Columbia (MU), Columbia MO, USA
-B.S. in Biological Science Jul 2012
-Advisor: Dr. Suxia Li
-East China University of Science and Technology (ECUST), Shanghai China
-Research projects See here for a list of my projects.
-My talk on youtube &amp; youku in Chinese [中文]">
-    <meta property="og:description" content="Education Ph.D. in Bioinformatics May 2020 (expected) Advisor: Dr. Gavin Conant
-North Carolina State University (NCSU), Raleigh NC, USA
-M.S. in Biological Engineering Jul 2014
-Advisor: Dr. Kevin Gillis
-University of Missouri – Columbia (MU), Columbia MO, USA
-B.S. in Biological Science Jul 2012
-Advisor: Dr. Suxia Li
-East China University of Science and Technology (ECUST), Shanghai China
-Research projects See here for a list of my projects.
-My talk on youtube &amp; youku in Chinese [中文]">
+    <meta name="description" content="How to restore the truncated sequence identifiers.
+">
+    <meta property="og:description" content="How to restore the truncated sequence identifiers.
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Yue Hao 郝樾">
-    <meta property="og:url" content="/page/about/">
+    <meta property="og:title" content="More on the PHYLIP file format">
+    <meta property="og:url" content="/2018/09/more-on-the-phylip-file-format/">
     <meta property="og:site_name" content="Yue Hao 郝樾">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Yue Hao 郝樾">
-    <meta name="twitter:description" content="Education Ph.D. in Bioinformatics May 2020 (expected) Advisor: Dr. Gavin Conant
-North Carolina State University (NCSU), Raleigh NC, USA
-M.S. in Biological Engineering Jul 2014
-Advisor: Dr. Kevin Gillis
-University of Missouri – Columbia (MU), Columbia MO, USA
-B.S. in Biological Science Jul 2012
-Advisor: Dr. Suxia Li
-East China University of Science and Technology (ECUST), Shanghai China
-Research projects See here for a list of my projects.
-My talk on youtube &amp; youku in Chinese [中文]">
+    <meta name="twitter:description" content="How to restore the truncated sequence identifiers.
+">
     
     
 
@@ -80,6 +58,8 @@ My talk on youtube &amp; youku in Chinese [中文]">
       <meta property="og:image" content="https://i.imgur.com/mDyuAbY.jpg">
     
 
+    
+      <meta property="og:image" content="https://i.imgur.com/ooNET01.jpg">
     
     
     
@@ -114,7 +94,7 @@ ga('send', 'pageview');
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://yueyvettehao.netlify.com/">Yue Hao 郝樾</a>
@@ -134,7 +114,7 @@ ga('send', 'pageview');
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -274,7 +254,7 @@ ga('send', 'pageview');
 
       
 
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
@@ -284,105 +264,281 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Yue Hao 郝樾
+      More on the PHYLIP file format
     </h1>
   
   
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-09-21T00:00:00Z">
+        
+   21, 2018
+
+      </time>
+    
+    
+  
+  
+    <span></span>
+    
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/study_notes">study_notes</a>, 
+    
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/perl">perl</a>
+    
+  
+
+  </div>
+
 </div>
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              
+              <p>How to restore the truncated sequence identifiers.
+</p>
 
-<h2 id="education">Education</h2>
+<p>In the previous <a href="https://yueyvettehao.netlify.com/2018/09/using-biopython-to-concatenate-aligned-sequences-with-the-same-name/">post</a>, I mentioned that the length of the sequence identifiers in the strict <a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc75">PHYLIP</a> file format cannot exceed 10 characters. Longer sequence names will be truncated:</p>
 
-<p><strong>Ph.D. in Bioinformatics</strong>
-<br>May 2020 (expected) <br>
-Advisor: <a href="http://conantlab.org">Dr. Gavin Conant</a><br>
-North Carolina State University (NCSU), Raleigh NC, USA<br>
-<strong>M.S. in Biological Engineering</strong>
-<br>Jul 2014<br>
-Advisor: Dr. Kevin Gillis<br>
-University of Missouri – Columbia (MU), Columbia MO, USA<br>
-<strong>B.S. in Biological Science</strong>
-<br>Jul 2012<br>
-Advisor: Dr. Suxia Li<br>
-East China University of Science and Technology (ECUST), Shanghai China<br></p>
+<pre><code># strict.phy
+     3    15
+homo_sapie GATAATGCTG ACTAC
+ailuropoda GATAATGCTG ACTAT
+felis_catu GATAATGCTG ACTAT
+</code></pre>
 
-<h2 id="research-projects">Research projects</h2>
+<p>We can probably still figure out that they are human 👶, panda 🐼 and cat 🐱. But it might get confusing when the data contains many more sequences. <br>
+I wrote a perl script to restore the sequence names and change the alignment files to <a href="https://biopython.org/wiki/AlignIO">relaxed PHYLIP</a> format. <br>
+We will need a text file containing the full species names:</p>
 
-<p><a href="https://yueyvettehao.netlify.com/page/projects/">See here for a list of my projects.</a><br>
-<a href="https://yueyvettehao.netlify.com/2018/06/cgm%E6%BC%94%E8%AE%B2/">My talk on youtube &amp; youku in Chinese [中文]</a></p>
+<pre><code># species_list.txt
+homo_sapiens
+ailuropoda_melanoleuca
+felis_catus
+</code></pre>
 
-<h2 id="courses-taken">Courses taken</h2>
+<p>The code:
 
-<h5 id="fall-2018">Fall 2018</h5>
+  
+    
+  
+  
+    
+  
+  
+  
 
-<p>GN756 Computational Molecular Evolution</p>
 
-<h5 id="spring-2018">Spring 2018</h5>
+<figure class="highlight perl language-perl">
+  <figcaption>
+    
+      <span>change_phy_species_names.pl</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-perl"><code class="perl">#!/usr/bin/perl
+use strict;
+#Change species names in .phy file from 10 characters to full length.
 
-<p>ST590 Bioinformatics II<br>
-ST810 Bioinformatics Consulting</p>
+my ( $phyfile, $speciesfile, $readfh, $line, %Species_length, @array, %Firstten,
+   $num_species, $seq_length, $num_blocks, $i, $species, $ten_char, $species_length, 
+   @sort, $key, $speciesname_length, $space, $num, $j, @array, $outfile, $outfh, $k
+);
 
-<h5 id="fall-2017">Fall 2017</h5>
+$phyfile = $ARGV[0];
+$speciesfile = $ARGV[1];
+$outfile = &#34;relaxed_&#34;.$phyfile;
 
-<p>GN701 Molecular Genetics</p>
+open $readfh,&#39;&lt;&#39;,$speciesfile or die &#34;$!&#34;;
+while (!eof($readfh)) {
+    $line = &lt;$readfh&gt;;
+    $line =~ s/\r?\n*//g;
+    $Species_length{$line} = length($line);
+    $ten_char = $line;
+    $ten_char =~ s/^([\w\W]{10})[\w\W]&#43;/$1/g;
+    $Firstten{$ten_char} = $line;   
+}
+@array = ();
+foreach $key (sort keys %Species_length) {
+    push @array, $Species_length{$key};
+}
+@sort = sort { $a &lt;=&gt; $b } @array;
+#find the longest species name
+if ($sort[-1] &lt; 30) {
+    $speciesname_length = $sort[-1]; 
+} else {
+    $speciesname_length = 30;
+}
+close $readfh;
+open $readfh,&#39;&lt;&#39;,$phyfile or die &#34;$!&#34;;
+open $outfh,&#39;&gt;&#39;,$outfile or die &#34;$!&#34;;
 
-<h5 id="fall-2016">Fall 2016</h5>
+#headline
+$line = &lt;$readfh&gt;;
+$line =~ s/\r?\n*//g;
+# $line = $line.&#39;        I&#39;;
+print $outfh qq{$line\n};
+$line =~ s/\r?\n*//g;
+@array = split /\s&#43;/, $line;
+$num_species = $array[1];
+$seq_length = $array[2];
+$num_blocks = int ($seq_length / 50);
 
-<p>AnSci9423 Genetics of Populations<br>
-Stat7110 Statistical Software &amp; Data Analysis<br>
-Stat7750 Introduction to Probability Theory<br></p>
+# first block with species names
+for ($i = 0; $i &lt; $num_species; $i&#43;&#43;) {
+    $space = &#39;&#39;;
+    $line = &lt;$readfh&gt;;
+    $line =~ s/\r?\n*//g;
+    @array = split /\s/, $line;
+    if (exists $Firstten{$array[0]} ){
+        $species = $Firstten{$array[0]};
+        shift(@array);
+        $species_length = length($species);
+        $num = $speciesname_length - $species_length;
+        if ($num &gt;= 0) {
+            for ($j = 0; $j &lt;= $num&#43;1; $j&#43;&#43;) {
+                $space = $space.&#34; &#34;;
+            }
+        }
+    }
+    print $outfh qq{$species$space };
+    foreach (@array) {
+        print $outfh qq{$_ };
+    }
+    print $outfh qq{\n};
+}
+    
+for ($k = 0; $k &lt; $num_blocks; $k&#43;&#43;) {
+    $line = &lt;$readfh&gt;;
+    print $outfh qq{\n};
+    for ($i = 0; $i &lt; $num_species; $i&#43;&#43;) {
+        $line = &lt;$readfh&gt;;
+        $line =~ s/\r?\n*//g;
+        @array = split /\s&#43;/, $line;
+        shift(@array);
+        for ($j = 0; $j &lt;= $speciesname_length&#43;2; $j&#43;&#43;) {
+            print $outfh qq{ };
+        }
+        foreach (@array) {
+            print $outfh qq{$_ };
+        }
+        print $outfh qq{\n};
+    }
+}   
+close $readfh;
+close $outfh;
 
-<h5 id="spring-2016">Spring 2016</h5>
+sub length {
+    my $line = $_;
+    my @array = split //, $line;
+    return scalar(@array);
+};</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+Usage: <code>./change_phy_species_names.pl strict.phy species_list.txt</code> <br>
+And the output will be:</p>
 
-<p>Stat7710 Introduction to Mathematical Statistics<br></p>
-
-<h5 id="fall-2015">Fall 2015</h5>
-
-<p>Infoinst7010 Computational Methods in Bioinformatics<br>
-Stat8220 Applied Statistical Models 2<br></p>
-
-<h5 id="spring-2015">Spring 2015</h5>
-
-<p>CmpSc7380 Database Management System I<br>
-Infoinst8810 Research Methods in Informatics<br></p>
-
-<h5 id="fall-2014">Fall 2014</h5>
-
-<p>AnSci8633 Molecular Evolution<br>
-Infoinst8001 Introduction to Informatics<br>
-Stat7510 Applied Statistical Models 1<br></p>
-
-<h5 id="fall-2012">Fall 2012</h5>
-
-<p>BioSc8440 Integrative Neuroscience 1<br>
-BiolEn8001 Frontiers in Ultrasensitive Bio-detection<br>
-BiolEn8402 Research Methods<br>
-Mpp9426 Transmembrane Signaling<br></p>
-
-<h5 id="spring-2012">Spring 2012</h5>
-
-<p>BioSc8442 Integrative Neuroscience 2<br>
-BiolEn7380 Applied Electronic Instrumentation<br>
-BiolEn8001 Microscopic Imaging</p>
-
-<h5 id="fall-2011">Fall 2011</h5>
-
-<p>BiolEn7070 Bioelectricity<br>
-BiolEn7570 Fluorescent Imaging<br>
-BiolEn4980 Biological Engineering Design</p>
-
+<pre><code># relaxed.phy
+     3    15
+homo_sapiens                 GATAATGCTG ACTAC
+ailuropoda_melanoleuca       GATAATGCTG ACTAT
+felis_catus                  GATAATGCTG ACTAT
+</code></pre>
               
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
             
               
-            
-            
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small"></span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/phylip/">phylip</a>
 
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/alignment/">alignment</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/" data-tooltip="Parsing nested XML files">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml"></span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/09/using-biopython-to-concatenate-aligned-sequences-with-the-same-name/" data-tooltip="Using Biopython to concatenate (aligned) sequences with the same name">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr"></span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
             
           </div>
         </article>
@@ -393,22 +549,83 @@ BiolEn4980 Biological Engineering Design</p>
 </footer>
 
       </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
         
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/" data-tooltip="Parsing nested XML files">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml"></span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/09/using-biopython-to-concatenate-aligned-sequences-with-the-same-name/" data-tooltip="Using Biopython to concatenate (aligned) sequences with the same name">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr"></span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
 
       </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2Fpage%2Fabout%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F09%2Fmore-on-the-phylip-file-format%2F">
           <i class="fa fa-twitter"></i><span>%!(EXTRA string=Twitter)</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2Fpage%2Fabout%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F09%2Fmore-on-the-phylip-file-format%2F">
           <i class="fa fa-google-plus"></i><span>%!(EXTRA string=Google&#43;)</span>
         </a>
       </li>
@@ -618,6 +835,30 @@ $(document).ready(function() {
 </script>
 
 
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/yueyvettehao.netlify.com\/2018\/09\/more-on-the-phylip-file-format\/';
+          
+            this.page.identifier = '\/2018\/09\/more-on-the-phylip-file-format\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'https-yueyvettehao-netlify-com';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
   
 
 

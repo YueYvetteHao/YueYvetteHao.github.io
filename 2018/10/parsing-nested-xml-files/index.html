@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -16,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Perl</title>
+    <title>Parsing nested XML files</title>
     <meta name="author" content="Yue Hao">
     <meta name="keywords" content="">
 
@@ -30,19 +34,20 @@
     <meta name="theme-color" content="#ffffff">
     
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://yueyvettehao.netlify.com/categories/perl/index.xml">
-    
 
     
-    <meta name="description" content="Yue Hao">
-    <meta property="og:description" content="Yue Hao">
+    <meta name="description" content="How to parse nested xml files with the xml.etree.ElementTree module.
+">
+    <meta property="og:description" content="How to parse nested xml files with the xml.etree.ElementTree module.
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Perl">
-    <meta property="og:url" content="/categories/perl/">
+    <meta property="og:title" content="Parsing nested XML files">
+    <meta property="og:url" content="/2018/10/parsing-nested-xml-files/">
     <meta property="og:site_name" content="Yue Hao 郝樾">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Yue Hao 郝樾">
-    <meta name="twitter:description" content="Yue Hao">
+    <meta name="twitter:description" content="How to parse nested xml files with the xml.etree.ElementTree module.
+">
     
     
 
@@ -53,6 +58,8 @@
       <meta property="og:image" content="https://i.imgur.com/mDyuAbY.jpg">
     
 
+    
+      <meta property="og:image" content="https://i.imgur.com/eNyhevp.jpg">
     
     
     
@@ -87,7 +94,7 @@ ga('send', 'pageview');
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://yueyvettehao.netlify.com/">Yue Hao 郝樾</a>
@@ -107,7 +114,7 @@ ga('send', 'pageview');
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -246,40 +253,26 @@ ga('send', 'pageview');
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      Parsing nested XML files
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-          More on the PHYLIP file format
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-09-21T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-10-05T00:00:00Z">
         
-   21, 2018
+   5, 2018
 
       </time>
     
@@ -290,36 +283,234 @@ ga('send', 'pageview');
     
       <a class="category-link" href="https://yueyvettehao.netlify.com/categories/study_notes">study_notes</a>, 
     
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/perl">perl</a>
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/python">python</a>
     
   
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>How to restore the truncated sequence identifiers.
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>How to parse nested xml files with the <a href="https://docs.python.org/3/library/xml.etree.elementtree.html"><code>xml.etree.ElementTree</code></a> module.
 </p>
-      <p>
-        <a href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/" class="postShorten-excerpt_link link"></a>
+
+<p>XML is a data format that is similar to html: information was organized hierarchically between layers of paired brackets. <br>
+For example, here is a file containing metabolites data and the pathways each metabolite participates in:
+
+  
+    
+  
+  
+    
+  
+  
+  
+
+
+<figure class="highlight xml language-xml">
+  <figcaption>
+    
+      <span>metab.xml</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-xml"><code class="xml">&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;data&gt;
+&lt;metabolite id=&#34;Bc103&#34;&gt;
+  &lt;accession &gt;HMDB00001&lt;/accession&gt;
+  &lt;secondary_accessions&gt;
+    &lt;accession&gt;001&lt;/accession&gt;
+    &lt;accession&gt;002&lt;/accession&gt;
+  &lt;/secondary_accessions&gt;
+  &lt;name&gt;1-Methylhistidine&lt;/name&gt;
+  &lt;pathways&gt;
+    &lt;pathway&gt;
+      &lt;name&gt;Histidine Metabolism&lt;/name&gt;
+      &lt;smpdb_id&gt;SMP00044&lt;/smpdb_id&gt;
+      &lt;kegg_map_id&gt;map00340&lt;/kegg_map_id&gt;
+    &lt;/pathway&gt;
+    &lt;pathway&gt;
+      &lt;name&gt;Histidinemia&lt;/name&gt;
+      &lt;smpdb_id&gt;SMP00191&lt;/smpdb_id&gt;
+      &lt;kegg_map_id/&gt;
+    &lt;/pathway&gt;
+  &lt;/pathways&gt;
+&lt;/metabolite&gt;
+&lt;metabolite id=&#34;Bc103&#34;&gt;
+  &lt;name&gt;2-Ketobutyric acid&lt;/name&gt;
+  &lt;accession&gt;HMDB00002&lt;/accession&gt;
+  &lt;pathways&gt;
+    &lt;pathway&gt;
+      &lt;name&gt;Beta-Alanine Metabolism&lt;/name&gt;
+      &lt;smpdb_id&gt;SMP00044&lt;/smpdb_id&gt;
+      &lt;kegg_map_id&gt;map00340&lt;/kegg_map_id&gt;
+    &lt;/pathway&gt;
+    &lt;pathway&gt;
+      &lt;name&gt;Carnosinuria, carnosinemia&lt;/name&gt;
+      &lt;smpdb_id&gt;SMP00191&lt;/smpdb_id&gt;
+      &lt;kegg_map_id/&gt;
+    &lt;/pathway&gt;
+  &lt;/pathways&gt;
+&lt;/metabolite&gt;
+&lt;/data&gt;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+We want to extract the id and name of each metabolite, as well as all the pathway names for each metabolite.<br>
+Here is a short python script for parsing nested xml files:
+
+  
+    
+  
+  
+    
+  
+  
+  
+
+
+<figure class="highlight python language-python">
+  <figcaption>
+    
+      <span>nested_xml_parser.py</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-python"><code class="python">#!/usr/bin/python
+
+import sys
+from xml.etree import cElementTree as ET
+
+def main():
+  file = sys.argv[1]
+  tree = ET.parse(file)
+  root = tree.getroot()
+  for child in root:
+    metname = child.find(&#39;name&#39;).text
+    metid = child.find(&#39;accession&#39;).text
+    sys.stdout.write(metid &#43; &#39;\t&#39; &#43; metname &#43; &#39;\t&#39;)
+    for node in child.findall(&#39;.//secondary_accessions&#39;):
+      for snode in node.findall(&#39;accession&#39;):
+        sys.stdout.write(snode.text &#43; &#39;\t&#39;)
+    print &#39;\r&#39;
+    for node in child.findall(&#39;.//pathways&#39;):
+      for snode in node.getchildren():
+        pathname = snode.find(&#39;name&#39;).text
+        print pathname
+    print &#39;\r&#39;   
+     
+if __name__ == &#39;__main__&#39;:
+  main()</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small"></span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/xml/">xml</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml"></span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/" data-tooltip="More on the PHYLIP file format">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr"></span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-      </p>
-    </div>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   </div>
-  
-    <a href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://i.imgur.com/ooNET01.jpg"/>
-      </div>
-    </a>
-  
-</article>
+
 
             
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
             
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2018 <a href="https://github.com/YueYvetteHao">Yue Hao</a>. Hugo theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme">tranquilpeak</a>. 
@@ -327,6 +518,90 @@ ga('send', 'pageview');
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml"></span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/" data-tooltip="More on the PHYLIP file format">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr"></span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F10%2Fparsing-nested-xml-files%2F">
+          <i class="fa fa-twitter"></i><span>%!(EXTRA string=Twitter)</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F10%2Fparsing-nested-xml-files%2F">
+          <i class="fa fa-google-plus"></i><span>%!(EXTRA string=Google&#43;)</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -528,6 +803,32 @@ $(document).ready(function() {
 });
 </script>
 
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/yueyvettehao.netlify.com\/2018\/10\/parsing-nested-xml-files\/';
+          
+            this.page.identifier = '\/2018\/10\/parsing-nested-xml-files\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'https-yueyvettehao-netlify-com';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
