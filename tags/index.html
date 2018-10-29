@@ -100,7 +100,7 @@ ga('send', 'pageview');
     
     
       
-        <img class="header-picture" src="https://i.imgur.com/mDyuAbY.jpg" alt="" />
+        <img class="header-picture" src="https://i.imgur.com/mDyuAbY.jpg" alt="Author&#39;s picture" />
       
     
     </a>
@@ -112,7 +112,7 @@ ga('send', 'pageview');
     
       <div class="sidebar-profile">
         <a href="https://yueyvettehao.netlify.com/#about">
-          <img class="sidebar-profile-picture" src="https://i.imgur.com/mDyuAbY.jpg" alt="" />
+          <img class="sidebar-profile-picture" src="https://i.imgur.com/mDyuAbY.jpg" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Yue Hao</h4>
         
@@ -254,12 +254,12 @@ ga('send', 'pageview');
 
         <div id="tags-archives" class="main-content-wrap">
           <form id="filter-form" action="#">
-            <input name="tag" type="text" class="form-control input--xlarge" placeholder="" autofocus="autofocus">
+            <input name="tag" type="text" class="form-control input--xlarge" placeholder="Search tag" autofocus="autofocus">
           </form>
           <h4 class="archive-result text-color-base text-xlarge"
-              data-message-zero=""
-              data-message-one=""
-              data-message-other=""></h4>
+              data-message-zero="no tag found"
+              data-message-one="1 tag found"
+              data-message-other="{n} tags found"></h4>
 
             <section>
               
@@ -299,12 +299,20 @@ ga('send', 'pageview');
                   phylip
                 </a>
               
+                <a class="tag tag--primary tag--small" href="#phylogeny-list" data-tag="phylogeny">
+                  phylogeny
+                </a>
+              
                 <a class="tag tag--primary tag--small" href="#polyploidy-list" data-tag="polyploidy">
                   polyploidy
                 </a>
               
                 <a class="tag tag--primary tag--small" href="#presentation-list" data-tag="presentation">
                   presentation
+                </a>
+              
+                <a class="tag tag--primary tag--small" href="#tree-traversal-list" data-tag="tree-traversal">
+                  tree-traversal
                 </a>
               
                 <a class="tag tag--primary tag--small" href="#xml-list" data-tag="xml">
@@ -327,7 +335,7 @@ ga('send', 'pageview');
                           Using Biopython to concatenate (aligned) sequences with the same name
                         </a>
                         <span class="archive-post-date"> - 
-   2, 2018
+  September 2, 2018
 </span>
                       </li>
                     
@@ -336,7 +344,7 @@ ga('send', 'pageview');
                           More on the PHYLIP file format
                         </a>
                         <span class="archive-post-date"> - 
-   21, 2018
+  September 21, 2018
 </span>
                       </li>
                     
@@ -356,7 +364,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (1/2)
                         </a>
                         <span class="archive-post-date"> - 
-   4, 2018
+  July 4, 2018
 </span>
                       </li>
                     
@@ -365,7 +373,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (2/2)
                         </a>
                         <span class="archive-post-date"> - 
-   26, 2018
+  July 26, 2018
 </span>
                       </li>
                     
@@ -385,7 +393,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (1/2)
                         </a>
                         <span class="archive-post-date"> - 
-   4, 2018
+  July 4, 2018
 </span>
                       </li>
                     
@@ -394,7 +402,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (2/2)
                         </a>
                         <span class="archive-post-date"> - 
-   26, 2018
+  July 26, 2018
 </span>
                       </li>
                     
@@ -414,7 +422,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (1/2)
                         </a>
                         <span class="archive-post-date"> - 
-   4, 2018
+  July 4, 2018
 </span>
                       </li>
                     
@@ -423,7 +431,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (2/2)
                         </a>
                         <span class="archive-post-date"> - 
-   26, 2018
+  July 26, 2018
 </span>
                       </li>
                     
@@ -443,7 +451,7 @@ ga('send', 'pageview');
                           Using Biopython to concatenate (aligned) sequences with the same name
                         </a>
                         <span class="archive-post-date"> - 
-   2, 2018
+  September 2, 2018
 </span>
                       </li>
                     
@@ -463,7 +471,7 @@ ga('send', 'pageview');
                           CGM演讲
                         </a>
                         <span class="archive-post-date"> - 
-   27, 2018
+  June 27, 2018
 </span>
                       </li>
                     
@@ -483,7 +491,7 @@ ga('send', 'pageview');
                           Using Biopython to concatenate (aligned) sequences with the same name
                         </a>
                         <span class="archive-post-date"> - 
-   2, 2018
+  September 2, 2018
 </span>
                       </li>
                     
@@ -503,7 +511,7 @@ ga('send', 'pageview');
                           How to host your personal website on Github using Hugo (2/2)
                         </a>
                         <span class="archive-post-date"> - 
-   26, 2018
+  July 26, 2018
 </span>
                       </li>
                     
@@ -523,7 +531,27 @@ ga('send', 'pageview');
                           More on the PHYLIP file format
                         </a>
                         <span class="archive-post-date"> - 
-   21, 2018
+  September 21, 2018
+</span>
+                      </li>
+                    
+                  </ul>
+                </div>
+              
+                <div id="phylogeny-list" class="archive box" data-tag="phylogeny">
+                  <h4 class="archive-title">
+                    <a class="link-unstyled" href="phylogeny">
+                      phylogeny (1)
+                    </a>
+                  </h4>
+                  <ul class="archive-posts">
+                    
+                      <li class="archive-post">
+                        <a class="archive-post-title" href="https://yueyvettehao.netlify.com/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
+                          Traversing nodes in a phylogenetic tree
+                        </a>
+                        <span class="archive-post-date"> - 
+  October 28, 2018
 </span>
                       </li>
                     
@@ -543,7 +571,7 @@ ga('send', 'pageview');
                           CGM演讲
                         </a>
                         <span class="archive-post-date"> - 
-   27, 2018
+  June 27, 2018
 </span>
                       </li>
                     
@@ -563,7 +591,27 @@ ga('send', 'pageview');
                           CGM演讲
                         </a>
                         <span class="archive-post-date"> - 
-   27, 2018
+  June 27, 2018
+</span>
+                      </li>
+                    
+                  </ul>
+                </div>
+              
+                <div id="tree-traversal-list" class="archive box" data-tag="tree-traversal">
+                  <h4 class="archive-title">
+                    <a class="link-unstyled" href="tree-traversal">
+                      tree-traversal (1)
+                    </a>
+                  </h4>
+                  <ul class="archive-posts">
+                    
+                      <li class="archive-post">
+                        <a class="archive-post-title" href="https://yueyvettehao.netlify.com/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
+                          Traversing nodes in a phylogenetic tree
+                        </a>
+                        <span class="archive-post-date"> - 
+  October 28, 2018
 </span>
                       </li>
                     
@@ -583,7 +631,7 @@ ga('send', 'pageview');
                           Parsing nested XML files
                         </a>
                         <span class="archive-post-date"> - 
-   5, 2018
+  October 5, 2018
 </span>
                       </li>
                     
@@ -594,7 +642,7 @@ ga('send', 'pageview');
          </div>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2018 <a href="https://github.com/YueYvetteHao">Yue Hao</a>. Hugo theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme">tranquilpeak</a>. 
+    &copy; 2018 <a href="https://github.com/YueYvetteHao">Yue Hao</a>. Hugo theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme">tranquilpeak</a>. All Rights Reserved
   </span>
 </footer>
 
@@ -606,7 +654,7 @@ ga('send', 'pageview');
       <i class="fa fa-remove"></i>
     </div>
     
-      <img id="about-card-picture" src="https://i.imgur.com/mDyuAbY.jpg" alt="" />
+      <img id="about-card-picture" src="https://i.imgur.com/mDyuAbY.jpg" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Yue Hao</h4>
     

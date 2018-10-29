@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -16,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Website</title>
+    <title>Traversing nodes in a phylogenetic tree</title>
     <meta name="author" content="Yue Hao">
     <meta name="keywords" content="">
 
@@ -30,19 +34,20 @@
     <meta name="theme-color" content="#ffffff">
     
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://yueyvettehao.netlify.com/categories/website/index.xml">
-    
 
     
-    <meta name="description" content="Yue Hao">
-    <meta property="og:description" content="Yue Hao">
+    <meta name="description" content="Converting internal node numbering from postorder to preorder in a bifurcating tree using DendroPy.
+">
+    <meta property="og:description" content="Converting internal node numbering from postorder to preorder in a bifurcating tree using DendroPy.
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Website">
-    <meta property="og:url" content="/categories/website/">
+    <meta property="og:title" content="Traversing nodes in a phylogenetic tree">
+    <meta property="og:url" content="/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
     <meta property="og:site_name" content="Yue Hao 郝樾">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Yue Hao 郝樾">
-    <meta name="twitter:description" content="Yue Hao">
+    <meta name="twitter:description" content="Converting internal node numbering from postorder to preorder in a bifurcating tree using DendroPy.
+">
     
     
 
@@ -53,6 +58,8 @@
       <meta property="og:image" content="https://i.imgur.com/mDyuAbY.jpg">
     
 
+    
+      <meta property="og:image" content="https://i.imgur.com/CBynhOY.jpg">
     
     
     
@@ -87,7 +94,7 @@ ga('send', 'pageview');
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://yueyvettehao.netlify.com/">Yue Hao 郝樾</a>
@@ -107,7 +114,7 @@ ga('send', 'pageview');
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -246,40 +253,26 @@ ga('send', 'pageview');
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      Traversing nodes in a phylogenetic tree
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://yueyvettehao.netlify.com/2018/07/how-to-host-your-personal-website-on-github-using-hugo-2/2/">
-          How to host your personal website on Github using Hugo (2/2)
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-07-26T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-10-28T00:00:00Z">
         
-  July 26, 2018
+  October 28, 2018
 
       </time>
     
@@ -290,95 +283,243 @@ ga('send', 'pageview');
     
       <a class="category-link" href="https://yueyvettehao.netlify.com/categories/study_notes">study_notes</a>, 
     
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/website">website</a>
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/python">python</a>
     
   
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>Customize the static website with Hugo.
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Converting internal node numbering from postorder to preorder in a bifurcating tree using <a href="https://dendropy.org/"><code>DendroPy</code></a>.
 </p>
-      <p>
-        <a href="https://yueyvettehao.netlify.com/2018/07/how-to-host-your-personal-website-on-github-using-hugo-2/2/" class="postShorten-excerpt_link link">Continue reading</a>
+
+<p>In a tree <a href="https://en.wikipedia.org/wiki/Tree_traversal">structure</a>, we can visit each node in different orders: inorder (left subtree → root → right subtree), preorder (root → left subtree → right subtree), postorder (left subtree → right subtree → root), etc. A detailed introduction to tree traversal algorithms can be found
+<a href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/">here</a>.<br>
+For example, we have a tree with five species: ((A,B),(C,(D,E)));
+<img src="https://i.imgur.com/dAJS7Fo.jpg" alt="tree" />
+In the above tree, if we visit every node (including tips and internal nodes) in preorder, we will start at the root, and always visit left branch before right branch:</p>
+
+<pre><code>Preorder    Nodes
+1   R*
+2   X*
+3   A
+4   B
+5   Y*
+6   C
+7   Z*
+8   D
+9   E 
+</code></pre>
+
+<p>*: internal nodes<br></p>
+
+<p>If following Postorder, we would go to left subtree, then right subtree, and visit the root in the end:</p>
+
+<pre><code>Postorder    Nodes
+1   A
+2   B
+3   X*
+4   C
+5   D
+6   E
+7   Z*
+8   Y*
+9   R* 
+</code></pre>
+
+<p>Sometimes in phylogenetics, nodes are indexed slightly differently: we would want to visit the tips of a tree first, and then the internal nodes would be in preorder or postorder, depending on the program.<br>
+In the <a href="https://bioconductor.org/packages/release/bioc/html/ggtree.html"><code>ggtree</code></a> R package, internal nodes in a tree are always in <strong>preorder</strong>. However, in one of our datasets, the internal nodes were indexed in <strong>postorder</strong>. To plot the tree correctly, I will need to convert the internal node numbers:</p>
+
+<pre><code>Postorder_internal    Nodes
+1   A
+2   B
+3   C
+4   D
+5   E
+6   X*
+7   Z*
+8   Y*
+9   R*
+Preorder_internal    Nodes
+1   A
+2   B
+3   C
+4   D
+5   E
+6   R*
+7   X*
+8   Y*
+9   Z*
+</code></pre>
+
+<p>Here is a python script to obtain both postorder and preorder internal node numbers using the <a href="https://dendropy.org/"><code>DendroPy</code></a> library:
+
+  
+    
+  
+  
+    
+  
+  
+  
+
+
+<figure class="highlight python language-python">
+  <figcaption>
+    
+      <span>internalnodes_postorder_preorder.py</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-python"><code class="python">#!/usr/bin/python
+# Convert internal nodes numbers from postorder to preorder
+import dendropy
+import sys
+
+tree = dendropy.Tree.get(
+    path=sys.argv[1],
+    schema=&#39;newick&#39;)
+
+Postorder = {}
+num = int(sys.argv[2]) #number of species
+for node in tree.postorder_node_iter():
+    node = str(node)
+    Arg = str(&#34;Taxon&#34; in node)
+    # internal nodes only
+    if Arg != &#34;True&#34;:
+      num = num&#43;1
+      # unique node identifier as hash key
+      Postorder[node[16:27]] = num
         
-      </p>
-    </div>
+Preorder = {}
+num = int(sys.argv[2])
+for node in tree.preorder_node_iter():
+    node = str(node)
+    Arg = str(&#34;Taxon&#34; in node)
+    # internal nodes only
+    if Arg != &#34;True&#34;:
+      num = num&#43;1
+      # unique node identifier as hash key
+      Preorder[node[16:27]] = num
+
+print &#34;Postorder =&gt; Preorder&#34;
+for key,val in Postorder.items():
+    print val, &#34;\t&#34;, Preorder[str(key)]</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+Usage:<code>python postorder.py tree.tre 5</code><br>
+Where <code>tree.tre</code> contains the tree file in newick format: <code>((A,B),(C,(D,E)));</code>, and <code>5</code> is the number of species(tips) in the tree.<br>
+The output of the python script will look like the following:</p>
+
+<pre><code>Postorder =&gt; Preorder
+6 	7
+7 	9
+8 	8
+9 	6
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/tree-traversal/">tree traversal</a>
+
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/phylogeny/">phylogeny</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/" data-tooltip="Parsing nested XML files">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   </div>
-  
-    <a href="https://yueyvettehao.netlify.com/2018/07/how-to-host-your-personal-website-on-github-using-hugo-2/2/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://i.imgur.com/D65Isnt.jpg"/>
-      </div>
-    </a>
-  
-</article>
+
 
             
               
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://yueyvettehao.netlify.com/2018/07/how-to-host-your-personal-website-on-github-using-hugo-1/2/">
-          How to host your personal website on Github using Hugo (1/2)
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-07-04T00:00:00Z">
-        
-  July 4, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/study_notes">study_notes</a>, 
-    
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/website">website</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>A beginner&rsquo;s tutorial for building a static website on Github with Hugo.
-</p>
-      <p>
-        <a href="https://yueyvettehao.netlify.com/2018/07/how-to-host-your-personal-website-on-github-using-hugo-1/2/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://yueyvettehao.netlify.com/2018/07/how-to-host-your-personal-website-on-github-using-hugo-1/2/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://i.imgur.com/mDyuAbY.jpg"/>
-      </div>
-    </a>
-  
-</article>
-
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
             
-            
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2018 <a href="https://github.com/YueYvetteHao">Yue Hao</a>. Hugo theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme">tranquilpeak</a>. All Rights Reserved
@@ -386,6 +527,90 @@ ga('send', 'pageview');
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/" data-tooltip="Parsing nested XML files">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/10/traversing-nodes-in-a-phylogenetic-tree/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F10%2Ftraversing-nodes-in-a-phylogenetic-tree%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F10%2Ftraversing-nodes-in-a-phylogenetic-tree%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -605,6 +830,32 @@ $(document).ready(function() {
 });
 </script>
 
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/yueyvettehao.netlify.com\/2018\/10\/traversing-nodes-in-a-phylogenetic-tree\/';
+          
+            this.page.identifier = '\/2018\/10\/traversing-nodes-in-a-phylogenetic-tree\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'https-yueyvettehao-netlify-com';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
