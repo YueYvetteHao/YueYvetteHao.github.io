@@ -301,62 +301,32 @@ ga('send', 'pageview');
 </p>
 
 <p>In a tree <a href="https://en.wikipedia.org/wiki/Tree_traversal">structure</a>, we can visit each node in different orders: inorder (left subtree → root → right subtree), preorder (root → left subtree → right subtree), postorder (left subtree → right subtree → root), etc. A detailed introduction to tree traversal algorithms can be found
-<a href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/">here</a>.<br>
-For example, we have a tree with five species: ((A,B),(C,(D,E)));
+<a href="https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/">here</a>.<br></p>
+
+<p>For example, we have a tree with five species: ((A,B),(C,(D,E)));
 <img src="https://i.imgur.com/dAJS7Fo.jpg" alt="tree" />
 In the above tree, if we visit every node (including tips and internal nodes) in preorder, we will start at the root, and always visit left branch before right branch:</p>
 
-<pre><code>Preorder    Nodes
-1   R*
-2   X*
-3   A
-4   B
-5   Y*
-6   C
-7   Z*
-8   D
-9   E 
+<pre><code>Preorder  1  2  3  4  5  6  7  8  9   
+Nodes     R* X* A  B  Y* C  Z* D  E
 </code></pre>
 
 <p>*: internal nodes<br></p>
 
-<p>If following Postorder, we would go to left subtree, then right subtree, and visit the root in the end:</p>
+<p>If following postorder, we would go to left subtree, then right subtree, and visit the root in the end:</p>
 
-<pre><code>Postorder    Nodes
-1   A
-2   B
-3   X*
-4   C
-5   D
-6   E
-7   Z*
-8   Y*
-9   R* 
+<pre><code>Postorder 1  2  3  4  5  6  7  8  9
+Nodes     A  B  X* C  D  E  Z* Y* R*
 </code></pre>
 
 <p>Sometimes in phylogenetics, nodes are indexed slightly differently: we would want to visit the tips of a tree first, and then the internal nodes would be in preorder or postorder, depending on the program.<br>
 In the <a href="https://bioconductor.org/packages/release/bioc/html/ggtree.html"><code>ggtree</code></a> R package, internal nodes in a tree are always in <strong>preorder</strong>. However, in one of our datasets, the internal nodes were indexed in <strong>postorder</strong>. To plot the tree correctly, I will need to convert the internal node numbers:</p>
 
-<pre><code>Postorder_internal    Nodes
-1   A
-2   B
-3   C
-4   D
-5   E
-6   X*
-7   Z*
-8   Y*
-9   R*
-Preorder_internal    Nodes
-1   A
-2   B
-3   C
-4   D
-5   E
-6   R*
-7   X*
-8   Y*
-9   Z*
+<pre><code>Postorder_internal 1  2  3  4  5  6  7  8  9
+Nodes              A  B  C  D  E  X* Z* Y* R*
+
+Preorder_internal  1  2  3  4  5  6  7  8  9
+Nodes              A  B  C  D  E  R* X* Y* Z*
 </code></pre>
 
 <p>Here is a python script to obtain both postorder and preorder internal node numbers using the <a href="https://dendropy.org/"><code>DendroPy</code></a> library:
@@ -424,7 +394,7 @@ for key,val in Postorder.items():
   </table>
 </figure>
 Usage:<code>python postorder.py tree.tre 5</code><br>
-Where <code>tree.tre</code> contains the tree file in newick format: <code>((A,B),(C,(D,E)));</code>, and <code>5</code> is the number of species(tips) in the tree.<br>
+where <code>tree.tre</code> contains the tree file in newick format: <code>((A,B),(C,(D,E)));</code> and <code>5</code> is the number of species(tips) in the tree.<br>
 The output of the python script will look like the following:</p>
 
 <pre><code>Postorder =&gt; Preorder
