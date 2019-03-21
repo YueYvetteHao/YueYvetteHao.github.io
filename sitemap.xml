@@ -139,13 +139,13 @@
   </url>
   
   <url>
-    <loc>https://yueyvettehao.netlify.com/tags/presentation/</loc>
+    <loc>https://yueyvettehao.netlify.com/categories/presentation/</loc>
     <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yueyvettehao.netlify.com/categories/presentation/</loc>
+    <loc>https://yueyvettehao.netlify.com/tags/presentation/</loc>
     <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -175,25 +175,25 @@
   </url>
   
   <url>
-    <loc>https://yueyvettehao.netlify.com/tags/website/</loc>
-    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yueyvettehao.netlify.com/categories/website/</loc>
     <lastmod>2019-03-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yueyvettehao.netlify.com/tags/writing/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://yueyvettehao.netlify.com/tags/website/</loc>
+    <lastmod>2019-03-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yueyvettehao.netlify.com/categories/writing/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yueyvettehao.netlify.com/tags/writing/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
