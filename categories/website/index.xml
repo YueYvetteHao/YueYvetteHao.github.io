@@ -6,10 +6,20 @@
     <description>Recent content in Website on Yue Hao 郝樾</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://yueyvettehao.netlify.com/categories/website/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to embed videos on website</title>
+      <link>https://yueyvettehao.netlify.com/2019/03/how-to-embed-videos-on-website/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2019/03/how-to-embed-videos-on-website/</guid>
+      <description>&lt;p&gt;This blog is about how to embed video players on webpages hosted by &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/&#34;&gt;Hugo&lt;/a&gt;.
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How to host your personal website on Github using Hugo (2/2)</title>

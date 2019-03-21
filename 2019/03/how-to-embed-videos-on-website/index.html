@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -16,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Perl</title>
+    <title>How to embed videos on website</title>
     <meta name="author" content="Yue Hao">
     <meta name="keywords" content="">
 
@@ -30,19 +34,20 @@
     <meta name="theme-color" content="#ffffff">
     
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://yueyvettehao.netlify.com/categories/perl/index.xml">
-    
 
     
-    <meta name="description" content="Yue Hao">
-    <meta property="og:description" content="Yue Hao">
+    <meta name="description" content="This blog is about how to embed video players on webpages hosted by Hugo.
+">
+    <meta property="og:description" content="This blog is about how to embed video players on webpages hosted by Hugo.
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Perl">
-    <meta property="og:url" content="/categories/perl/">
+    <meta property="og:title" content="How to embed videos on website">
+    <meta property="og:url" content="/2019/03/how-to-embed-videos-on-website/">
     <meta property="og:site_name" content="Yue Hao 郝樾">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Yue Hao 郝樾">
-    <meta name="twitter:description" content="Yue Hao">
+    <meta name="twitter:description" content="This blog is about how to embed video players on webpages hosted by Hugo.
+">
     
     
 
@@ -53,6 +58,8 @@
       <meta property="og:image" content="https://i.imgur.com/mDyuAbY.jpg">
     
 
+    
+      <meta property="og:image" content="https://i.imgur.com/1rkZsrr.png">
     
     
     
@@ -87,7 +94,7 @@ ga('send', 'pageview');
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://yueyvettehao.netlify.com/">Yue Hao 郝樾</a>
@@ -107,7 +114,7 @@ ga('send', 'pageview');
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -246,40 +253,26 @@ ga('send', 'pageview');
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      How to embed videos on website
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-          More on the PHYLIP file format
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-09-21T00:00:00Z">
+      <time itemprop="datePublished" datetime="2019-03-21T00:00:00Z">
         
-  September 21, 2018
+  March 21, 2019
 
       </time>
     
@@ -288,38 +281,266 @@ ga('send', 'pageview');
   
     <span>in</span>
     
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/study_notes">study_notes</a>, 
-    
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/perl">perl</a>
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/website">website</a>
     
   
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>How to restore the truncated sequence identifiers.
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>This blog is about how to embed video players on webpages hosted by <a href="https://gohugo.io/content-management/shortcodes/">Hugo</a>.
 </p>
-      <p>
-        <a href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/" class="postShorten-excerpt_link link">Continue reading</a>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#youtube-video-player">YouTube Video Player</a></li>
+<li><a href="#优酷视频">优酷视频</a></li>
+<li><a href="#腾讯视频">腾讯视频</a></li>
+</ul>
+</nav>
+
+<h1 id="youtube-video-player">YouTube Video Player</h1>
+
+<p>YouTube (and vimeo) video embedding is already supported by Hugo&rsquo;s built-in <a href="https://gohugo.io/content-management/shortcodes/#youtube">shortcodes</a>.<br>
+Thus, to integrate a YouTube video player on your website is easy, simply add the following line of code in the markdown file:
+<img src="https://i.imgur.com/YqYzj8j.jpg" alt="" /></p>
+
+<p>The id is copied from the URL of the original YouTube <a href="https://www.youtube.com/watch?v=1PQ-qpPVIJo">video</a>:</p>
+
+<pre><code>https://www.youtube.com/watch?v=<span class="highlight-text red">1PQ-qpPVIJo</span>
+</code></pre>
+
+<p>When calling the shortcode &ldquo;youtube&rdquo;, the following html codes will be automatically generated for the website:
+
+  
+    
+  
+  
+    
+  
+  
+  
+
+
+<figure class="highlight markdown language-markdown">
+  <figcaption>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-markdown"><code class="markdown">&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/1PQ-qpPVIJo?&#34;
+  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+And the embeded video will look like the following:
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/1PQ-qpPVIJo?"
+  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+</div></p>
+
+<h1 id="优酷视频">优酷视频</h1>
+
+<p>In order to embed video players from a different source, we will need to customize a shortcode and upload it in the <span class="highlight-text orange">/layouts/shortocdes</span> folder.<br>
+For example, the following html file will enable us to embed Youku video players on the website:
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+
+
+<figure class="highlight xml language-xml">
+  <figcaption>
+    
+      <span>youku.html</span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/shortcodes/youku.html" target="_blank" rel="external">youku.html</a>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-xml"><code class="xml">&lt;div class=&#34;embed-container&#34;&gt;
+	&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//player.youku.com/embed/{{ index .Params &#34;id&#34; }}&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+After uploading the customized shortcode, integrating videos from Youku is similar to adding YouTube videos. We will call the shortcode named &ldquo;youku&rdquo; by including the following line of code in the markdown file:
+<img src="https://i.imgur.com/jFPUIcu.jpg" alt="" /></p>
+
+<p>Again, the video id is copied from the original <a href="https://v.youku.com/v_show/id_XMzY5MTQxNjIwMA==.html">URL</a>:</p>
+
+<pre><code>https://v.youku.com/v_show/id_<span class="highlight-text red">XMzY5MTQxNjIwMA==</span>.html
+</code></pre>
+
+<p>Then, a video player for Youku is embeded:
+<div class="embed-container">
+	<iframe width="560" height="315" src="//player.youku.com/embed/XMzY5MTQxNjIwMA==" frameborder="0" allowfullscreen></iframe>
+</div>
+</p>
+
+<h1 id="腾讯视频">腾讯视频</h1>
+
+<p>Similarly, we will customize another shortcode for Tencent videos, and upload it to the <span class="highlight-text orange">/layouts/shortocdes</span> folder:
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+
+
+<figure class="highlight xml language-xml">
+  <figcaption>
+    
+      <span>tencent.html</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-xml"><code class="xml">&lt;div class=&#34;embed-container&#34;&gt;
+	&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;http://v.qq.com/iframe/player.html?vid={{ index .Params &#34;id&#34; }}&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>Then we can embed a Tencent <a href="http://v.qq.com/x/page/b0846uzr9sq.html">video</a> (<code>http://v.qq.com/x/page/<span class="highlight-text red">b0846uzr9sq</span>.html</code>) with the following code:
+<img src="https://i.imgur.com/2XQ4sm3.jpg" alt="" /></p>
+
+<p>Tencent video:
+<div class="embed-container">
+	<iframe width="560" height="315" src="http://v.qq.com/iframe/player.html?vid=b0846uzr9sq" frameborder="0" allowfullscreen></iframe>
+</div>
+</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/website/">website</a>
+
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/markdown/">markdown</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2019/03/%E6%B5%85%E8%B0%88%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C/" data-tooltip="浅谈英文写作">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-      </p>
-    </div>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2019/03/how-to-embed-videos-on-website/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2019/03/how-to-embed-videos-on-website/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   </div>
-  
-    <a href="https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://i.imgur.com/ooNET01.jpg"/>
-      </div>
-    </a>
-  
-</article>
+
 
             
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
             
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2019 <a href="https://github.com/YueYvetteHao">Yue Hao</a>. Hugo theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme">tranquilpeak</a>. All Rights Reserved
@@ -327,6 +548,90 @@ ga('send', 'pageview');
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2019/03/%E6%B5%85%E8%B0%88%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C/" data-tooltip="浅谈英文写作">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2019/03/how-to-embed-videos-on-website/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2019/03/how-to-embed-videos-on-website/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2F2019%2F03%2Fhow-to-embed-videos-on-website%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2F2019%2F03%2Fhow-to-embed-videos-on-website%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -582,6 +887,32 @@ $(document).ready(function() {
 });
 </script>
 
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/yueyvettehao.netlify.com\/2019\/03\/how-to-embed-videos-on-website\/';
+          
+            this.page.identifier = '\/2019\/03\/how-to-embed-videos-on-website\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'https-yueyvettehao-netlify-com';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
