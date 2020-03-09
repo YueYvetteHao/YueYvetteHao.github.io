@@ -6,10 +6,79 @@
     <description>Recent content on Yue Hao 郝樾</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://yueyvettehao.netlify.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/curriculum-vitae/</link>
+      <pubDate>Thu, 23 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/curriculum-vitae/</guid>
+      <description>&lt;p&gt;Click here to download my &lt;a href=&#34;https://yueyvettehao.netlify.com/files/yuehao_cv_2020.pdf&#34;&gt;Curriculum Vitae&lt;/a&gt;.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Research Projects</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/research-projects/</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/research-projects/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Research Statement</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/research-statement/</link>
+      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/research-statement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching Statement</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/teaching-statement/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/teaching-statement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Diversity Statement</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/diversity-statement/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/diversity-statement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching Example 1</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/teaching-example-1/</link>
+      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/teaching-example-1/</guid>
+      <description>&lt;p&gt;Quantitative Biology - Genetic Drift Simulation. &lt;br&gt;
+An in-class programming practice using Jupyter Notebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Teaching Example 2</title>
+      <link>https://yueyvettehao.netlify.com/2020/01/teaching-example-2/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/2020/01/teaching-example-2/</guid>
+      <description>&lt;p&gt;Engineering Lab - Traffic Light System with Arduino Microcontroller.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How to embed videos on website</title>
@@ -99,20 +168,6 @@
       <guid>https://yueyvettehao.netlify.com/2018/06/cgm%E6%BC%94%E8%AE%B2/</guid>
       <description>&lt;p&gt;非常感谢&lt;a href=&#34;http://cgmonline.co/&#34;&gt;北美华人基因组学在线沙龙&lt;/a&gt;(Chinese Genomics online Meet-up, CGM)的主办方，让我有这次机会能用中文讲一讲自己在读博士期间所参与的&lt;a href=&#34;http://cgmonline.co/2018/06/cgm-%E7%AC%AC32%E6%9C%9Fpreferential-retention-of-homeologs-from-a-single-parental-subgenome-after-polyploidy-is-shaped-by-functional-interactions-and-dosage-based-intrinsic-selective-constraint/&#34;&gt;研究课题&lt;/a&gt;。&lt;br&gt;
 &lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://yueyvettehao.netlify.com/page/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yueyvettehao.netlify.com/page/projects/</guid>
-      <description>🏠Home
-PhD projects: Advisor: Dr. Gavin Conant
-Polyploidy and plant genome evolution I am studying the molecular evolution of post-polyploidization Brassica species such as B. rapa, B. olecarea and B. napus. Status: statistically modeling preferentially gene retention after the paleopolyploidy events in the tribe Brassiceae
-
-Papers:
-Hao Y, Washburn JD, Rosenthal J, Nielsen B, Lyons E, Edger PP, Pires JC and Conant GC. 2018. Patterns of population variation in two paleopolyploid eudicot lineages suggest that dosage-based selection on homeologs is long-lived.</description>
     </item>
     
     <item>
