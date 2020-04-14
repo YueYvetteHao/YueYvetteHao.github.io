@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>More on the PHYLIP file format</title>
+    <title>Diversity Statement</title>
     <meta name="author" content="Yue Hao">
     <meta name="keywords" content="">
 
@@ -36,18 +36,15 @@
     
 
     
-    <meta name="description" content="How to restore the truncated sequence identifiers.
-">
-    <meta property="og:description" content="How to restore the truncated sequence identifiers.
-">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="More on the PHYLIP file format">
-    <meta property="og:url" content="/2018/09/more-on-the-phylip-file-format/">
+    <meta property="og:title" content="Diversity Statement">
+    <meta property="og:url" content="/2020/04/diversity-statement/">
     <meta property="og:site_name" content="Yue Hao 郝樾">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Yue Hao 郝樾">
-    <meta name="twitter:description" content="How to restore the truncated sequence identifiers.
-">
+    <meta name="twitter:description" content="">
     
     
 
@@ -58,8 +55,6 @@
       <meta property="og:image" content="https://i.imgur.com/mDyuAbY.jpg">
     
 
-    
-      <meta property="og:image" content="https://i.imgur.com/ooNET01.jpg">
     
     
     
@@ -254,15 +249,15 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      More on the PHYLIP file format
+      Diversity Statement
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-09-21T00:00:00Z">
+      <time itemprop="datePublished" datetime="2020-04-11T00:00:00Z">
         
-  September 21, 2018
+  April 11, 2020
 
       </time>
     
@@ -271,7 +266,9 @@ ga('send', 'pageview');
   
     <span>in</span>
     
-      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/blog">blog</a>
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/portfolio">portfolio</a>, 
+    
+      <a class="category-link" href="https://yueyvettehao.netlify.com/categories/research">research</a>
     
   
 
@@ -281,164 +278,8 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>How to restore the truncated sequence identifiers.
-</p>
-
-<p>In the previous <a href="https://yueyvettehao.netlify.com/2018/09/using-biopython-to-concatenate-aligned-sequences-with-the-same-name/">post</a>, I mentioned that the length of the sequence identifiers in the strict <a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc75">PHYLIP</a> file format cannot exceed 10 characters. Longer sequence names will be truncated:</p>
-
-<pre><code># strict.phy
-     3    15
-homo_sapie GATAATGCTG ACTAC
-ailuropoda GATAATGCTG ACTAT
-felis_catu GATAATGCTG ACTAT
-</code></pre>
-
-<p>We can probably still figure out that they are human 👶, panda 🐼 and cat 🐱. But it might get confusing when the data contains many more sequences. <br>
-I wrote a perl script to restore the sequence names and change the alignment files to <a href="https://biopython.org/wiki/AlignIO">relaxed PHYLIP</a> format. <br>
-We will need a text file containing the full species names:</p>
-
-<pre><code># species_list.txt
-homo_sapiens
-ailuropoda_melanoleuca
-felis_catus
-</code></pre>
-
-<p>The code:
-
-  
-    
-  
-  
-    
-  
-  
-  
-
-
-<figure class="highlight perl language-perl">
-  <figcaption>
-    
-      <span>change_phy_species_names.pl</span>
-    
-  </figcaption>
-  <table>
-    <tbody>
-      <tr>
-        <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre>
-        </td>
-        <td class="code">
-          <pre class="code-highlight language-perl"><code class="perl">#!/usr/bin/perl
-use strict;
-#Change species names in .phy file from 10 characters to full length.
-
-my ( $phyfile, $speciesfile, $readfh, $line, %Species_length, @array, %Firstten,
-   $num_species, $seq_length, $num_blocks, $i, $species, $ten_char, $species_length, 
-   @sort, $key, $speciesname_length, $space, $num, $j, @array, $outfile, $outfh, $k
-);
-
-$phyfile = $ARGV[0];
-$speciesfile = $ARGV[1];
-$outfile = &#34;relaxed_&#34;.$phyfile;
-
-open $readfh,&#39;&lt;&#39;,$speciesfile or die &#34;$!&#34;;
-while (!eof($readfh)) {
-    $line = &lt;$readfh&gt;;
-    $line =~ s/\r?\n*//g;
-    $Species_length{$line} = length($line);
-    $ten_char = $line;
-    $ten_char =~ s/^([\w\W]{10})[\w\W]&#43;/$1/g;
-    $Firstten{$ten_char} = $line;   
-}
-@array = ();
-foreach $key (sort keys %Species_length) {
-    push @array, $Species_length{$key};
-}
-@sort = sort { $a &lt;=&gt; $b } @array;
-#find the longest species name
-if ($sort[-1] &lt; 30) {
-    $speciesname_length = $sort[-1]; 
-} else {
-    $speciesname_length = 30;
-}
-close $readfh;
-open $readfh,&#39;&lt;&#39;,$phyfile or die &#34;$!&#34;;
-open $outfh,&#39;&gt;&#39;,$outfile or die &#34;$!&#34;;
-
-#headline
-$line = &lt;$readfh&gt;;
-$line =~ s/\r?\n*//g;
-# $line = $line.&#39;        I&#39;;
-print $outfh qq{$line\n};
-$line =~ s/\r?\n*//g;
-@array = split /\s&#43;/, $line;
-$num_species = $array[1];
-$seq_length = $array[2];
-$num_blocks = int ($seq_length / 50);
-
-# first block with species names
-for ($i = 0; $i &lt; $num_species; $i&#43;&#43;) {
-    $space = &#39;&#39;;
-    $line = &lt;$readfh&gt;;
-    $line =~ s/\r?\n*//g;
-    @array = split /\s/, $line;
-    if (exists $Firstten{$array[0]} ){
-        $species = $Firstten{$array[0]};
-        shift(@array);
-        $species_length = length($species);
-        $num = $speciesname_length - $species_length;
-        if ($num &gt;= 0) {
-            for ($j = 0; $j &lt;= $num&#43;1; $j&#43;&#43;) {
-                $space = $space.&#34; &#34;;
-            }
-        }
-    }
-    print $outfh qq{$species$space };
-    foreach (@array) {
-        print $outfh qq{$_ };
-    }
-    print $outfh qq{\n};
-}
-    
-for ($k = 0; $k &lt; $num_blocks; $k&#43;&#43;) {
-    $line = &lt;$readfh&gt;;
-    print $outfh qq{\n};
-    for ($i = 0; $i &lt; $num_species; $i&#43;&#43;) {
-        $line = &lt;$readfh&gt;;
-        $line =~ s/\r?\n*//g;
-        @array = split /\s&#43;/, $line;
-        shift(@array);
-        for ($j = 0; $j &lt;= $speciesname_length&#43;2; $j&#43;&#43;) {
-            print $outfh qq{ };
-        }
-        foreach (@array) {
-            print $outfh qq{$_ };
-        }
-        print $outfh qq{\n};
-    }
-}   
-close $readfh;
-close $outfh;
-
-sub length {
-    my $line = $_;
-    my @array = split //, $line;
-    return scalar(@array);
-};</code></pre>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-Usage: <code>./change_phy_species_names.pl strict.phy species_list.txt</code> <br>
-And the output will be:</p>
-
-<pre><code># relaxed.phy
-     3    15
-homo_sapiens                 GATAATGCTG ACTAC
-ailuropoda_melanoleuca       GATAATGCTG ACTAT
-felis_catus                  GATAATGCTG ACTAT
-</code></pre>
+              <p>
+Coming soon.</p>
               
             </div>
           </div>
@@ -450,11 +291,7 @@ felis_catus                  GATAATGCTG ACTAT
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/perl/">perl</a>
-
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/phylip/">phylip</a>
-
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/alignment/">alignment</a>
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.com/tags/portfolio/">portfolio</a>
 
                   </div>
                 
@@ -467,7 +304,7 @@ felis_catus                  GATAATGCTG ACTAT
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/" data-tooltip="Parsing nested XML files">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2020/04/teaching-statement/" data-tooltip="Teaching Statement">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -475,7 +312,7 @@ felis_catus                  GATAATGCTG ACTAT
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/09/using-biopython-to-concatenate-aligned-sequences-with-the-same-name/" data-tooltip="Using Biopython to concatenate (aligned) sequences with the same name">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2020/04/teaching-example-1/" data-tooltip="Teaching Example 1">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -486,31 +323,6 @@ felis_catus                  GATAATGCTG ACTAT
       </nav>
     <ul class="post-actions post-action-share" >
       
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
-      
-        <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </li>
       
       <li class="post-action">
         
@@ -523,12 +335,6 @@ felis_catus                  GATAATGCTG ACTAT
   </div>
 
 
-            
-              
-                <div id="disqus_thread">
-  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-              
             
           </div>
         </article>
@@ -547,7 +353,7 @@ felis_catus                  GATAATGCTG ACTAT
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/10/parsing-nested-xml-files/" data-tooltip="Parsing nested XML files">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2020/04/teaching-statement/" data-tooltip="Teaching Statement">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -555,7 +361,7 @@ felis_catus                  GATAATGCTG ACTAT
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2018/09/using-biopython-to-concatenate-aligned-sequences-with-the-same-name/" data-tooltip="Using Biopython to concatenate (aligned) sequences with the same name">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.com/2020/04/teaching-example-1/" data-tooltip="Teaching Example 1">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -566,31 +372,6 @@ felis_catus                  GATAATGCTG ACTAT
       </nav>
     <ul class="post-actions post-action-share" >
       
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.com/2018/09/more-on-the-phylip-file-format/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
-      
-        <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </li>
       
       <li class="post-action">
         
@@ -609,13 +390,13 @@ felis_catus                  GATAATGCTG ACTAT
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F09%2Fmore-on-the-phylip-file-format%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.com%2F2020%2F04%2Fdiversity-statement%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2F2018%2F09%2Fmore-on-the-phylip-file-format%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.com%2F2020%2F04%2Fdiversity-statement%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -896,30 +677,6 @@ $(document).ready(function() {
 </script>
 
 
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/yueyvettehao.netlify.com\/2018\/09\/more-on-the-phylip-file-format\/';
-          
-            this.page.identifier = '\/2018\/09\/more-on-the-phylip-file-format\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'https-yueyvettehao-netlify-com';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
   
 
 
