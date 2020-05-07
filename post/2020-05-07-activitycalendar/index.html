@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.37.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Using Biopython to concatenate (aligned) sequences with the same name</title>
+    <title>How to add a calendar to Hugo website</title>
     <meta name="author" content="Yue Hao">
     <meta name="keywords" content="">
 
@@ -36,17 +36,20 @@
     
 
     
-    <meta name="description" content="Biopython is awesome! :)
+    <meta name="description" content="Today I tadded a calendar to my website, and I was inspired by these two blog posts: Activity Calendar Partial and Generate Yearly and Monthly Archive Pages with Hugo Sections.
+
 ">
-    <meta property="og:description" content="Biopython is awesome! :)
+    <meta property="og:description" content="Today I tadded a calendar to my website, and I was inspired by these two blog posts: Activity Calendar Partial and Generate Yearly and Monthly Archive Pages with Hugo Sections.
+
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Using Biopython to concatenate (aligned) sequences with the same name">
-    <meta property="og:url" content="/post/2018-09-02-concatenate/">
+    <meta property="og:title" content="How to add a calendar to Hugo website">
+    <meta property="og:url" content="/post/2020-05-07-activitycalendar/">
     <meta property="og:site_name" content="Yue Hao 郝樾">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Yue Hao 郝樾">
-    <meta name="twitter:description" content="Biopython is awesome! :)
+    <meta name="twitter:description" content="Today I tadded a calendar to my website, and I was inspired by these two blog posts: Activity Calendar Partial and Generate Yearly and Monthly Archive Pages with Hugo Sections.
+
 ">
     
     
@@ -59,7 +62,7 @@
     
 
     
-      <meta property="og:image" content="https://i.imgur.com/BKidQJH.png">
+      <meta property="og:image" content="https://i.imgur.com/VXhGlJM.png">
     
     
     
@@ -271,15 +274,15 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Using Biopython to concatenate (aligned) sequences with the same name
+      How to add a calendar to Hugo website
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-09-02T00:00:00Z">
+      <time itemprop="datePublished" datetime="2020-05-07T17:15:22Z">
         
-  September 2, 2018
+  May 7, 2020
 
       </time>
     
@@ -298,31 +301,44 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><a href="https://biopython.org/">Biopython</a> is awesome! :)
-</p>
+              <p>Today I tadded a calendar to my website, and I was inspired by these two blog posts: <a href="https://gohugohq.com/partials/activity-calendar-posts/">Activity Calendar Partial</a> and <a href="https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/">Generate Yearly and Monthly Archive Pages with Hugo Sections</a>.</p>
+
+<p></p>
 
 <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
-<li><a href="#concatenate-fasta-files">Concatenate fasta files</a></li>
-<li><a href="#concatenate-alignment-files">Concatenate alignment files</a></li>
+<li><a href="#partials-file-structure">Partials file structure</a></li>
+<li><a href="#taxonomy-structure">Taxonomy structure</a></li>
+<li><a href="#render-calendar-style">Render calendar style</a></li>
+<li><a href="#add-the-calendar-to-the-frontpage">Add the calendar to the frontpage</a></li>
 </ul>
 </nav>
 
-<h1 id="concatenate-fasta-files">Concatenate fasta files</h1>
+<h1 id="partials-file-structure">Partials file structure</h1>
 
-<p>I need to merge hundreds of fasta files into one big file by concatenating sequences with the same identifier. <br>
-My fasta files look like the following:
-<img src="https://i.imgur.com/Cxx7FaF.png" alt="exampleFiles" /></p>
+<p>Here are the partial files I created in the <span class="highlight-text orange">layouts/partials/</span> folder and they were organized in the following structure.</p>
 
-<p><a href="https://biopython.org/">Biopython</a> makes it so easy to merge these sequences together. <br></p>
-
-<p>First, cat all the fasta files:</p>
-
-<pre><code>cat *.fasta &gt; all.fasta
+<pre><code>|-- layouts
+|  |-- partials
+|  |  |-- archy.html
+|  |  |-- archm.html
+|  |  |-- archd.html
+|  |  |-- calendar.html
+|  |  |-- calendar
+|  |  |  |-- year.html
+|  |  |  |-- month.html
+|  |  |  |-- day.html
+|  |  |-- post
+|  |  |  |-- archive.html
 </code></pre>
 
-<p>Then we can use a <a href="https://docs.python.org/2/library/stdtypes.html#typesmapping">dictionary</a> to map all the sequence names (the code was adapted from <a href="http://lists.open-bio.org/pipermail/biopython/2015-July/015711.html">here</a>):</p>
+<p><span class="highlight-text primary">calendar.html</span>, <span class="highlight-text primary">year.html</span>, <span class="highlight-text primary">month.html</span>, <span class="highlight-text primary">day.html</span> files were downloaded from the <a href="https://gohugohq.com/partials/activity-calendar-posts/">Activity Calendar</a> blog post. However, I modified the  <span class="highlight-text primary">calendar.html</span> file slightly, changing <code>.GroupByPublishDate</code> to <code>.GroupByDate</code>:</p>
 
+<pre><code>{{ range ($pages.GroupByPublishDate &quot;2006&quot;) }}
+# Change to .GroupByDate
+</code></pre>
+
+<p>The code for three types of listing (by year, month or day) were partly adapted from templates provided in <a href="https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/">Generate Yearly and Monthly Archive Pages with Hugo Sections</a>.
 
   
     
@@ -331,69 +347,37 @@ My fasta files look like the following:
     
   
   
+    
+  
   
 
 
-<figure class="highlight python language-python">
+<figure class="highlight html language-html">
   <figcaption>
     
-      <span>concat_seq.py </span>
+      <span>archy.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/partials/archy.html" target="_blank" rel="external">archy.html </a>
     
   </figcaption>
   <table>
     <tbody>
       <tr>
         <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
         </td>
         <td class="code">
-          <pre class="code-highlight language-python"><code class="python">#!/usr/bin/python
-
-from Bio import SeqIO
-from collections import defaultdict
-
-sequence_map = defaultdict(str)
-
-for sequence in SeqIO.parse(&#39;all.fasta&#39;, &#34;fasta&#34;):
-  sequence_map[sequence.name] &#43;= str(sequence.seq)
-
-for key in sorted(sequence_map.iterkeys()):
-  print &#39;&gt;&#39; &#43; key
-  print sequence_map[key]</code></pre>
+          <pre class="code-highlight language-html"><code class="html">{{ $year := .Date.Format &#34;2006&#34; }}
+&lt;h2&gt;&amp;emsp;Archive for {{ $year }}&lt;/h2&gt;
+{{ range where .Site.Pages &#34;Type&#34; &#34;post&#34; }}
+    {{ if eq (.Date.Format &#34;2006&#34;) $year }}
+        {{ partial &#34;post/archive&#34; . }}
+    {{ end }}
+{{ end }}</code></pre>
         </td>
       </tr>
     </tbody>
   </table>
 </figure>
 
-<p>And we will get:</p>
-
-<pre><code>&gt;Seq1
-TTTCTTATT
-&gt;Seq2
-TCTCCTACT
-&gt;Seq3
-TATCATAAT
-</code></pre>
-
-<h1 id="concatenate-alignment-files">Concatenate alignment files</h1>
-
-<p>Similarly, use <a href="https://biopython.org/wiki/AlignIO">AlignIO</a> to read in sequence alignment files and concatenate them into a <a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc77">meta-alignment</a> file. For example, these files are in <a href="https://biopython.org/wiki/AlignIO">relaxed phylip</a> format (the sequence identifiers can be longer than 10 characters):</p>
-
-<pre><code># algn1.phy
-     3    15
-homo_sapiens                 GATAATGCTG ACTAC
-ailuropoda_melanoleuca       GATAATGCTG ACTAT
-felis_catus                  GATAATGCTG ACTAT
-# algn2.phy
-     3    15
-homo_sapiens                 AGATTATTTC AGAAA
-ailuropoda_melanoleuca       AGATTATTTC AGAAA
-felis_catus                  AGATTATTTC AGAAA
-</code></pre>
-
-<p>Python code to concatenate them:
-
   
     
   
@@ -401,59 +385,223 @@ felis_catus                  AGATTATTTC AGAAA
     
   
   
+    
+  
   
 
 
-<figure class="highlight python language-python">
+<figure class="highlight html language-html">
   <figcaption>
     
-      <span>concat_algn.py </span>
+      <span>archm.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/partials/archm.html" target="_blank" rel="external">archm.html </a>
     
   </figcaption>
   <table>
     <tbody>
       <tr>
         <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre>
         </td>
         <td class="code">
-          <pre class="code-highlight language-python"><code class="python">#!/usr/bin/python
-
-from Bio import AlignIO
-import glob
-
-filelist = glob.glob(&#39;./*.phy&#39;)
-i = 0
-for file in filelist:
-  print file
-  alignment = AlignIO.read(file, &#34;phylip-relaxed&#34;)
-  alignment.sort()  # sort the sequence identifiers so they match in all files
-  print(&#34;Alignment of length %i&#34; % alignment.get_alignment_length())
-  if i==0:
-    cat_algn = alignment
-  else:
-    cat_algn &#43;= alignment
-  i &#43;= 1
-
-print &#34;Concatenated:&#34;
-print(&#34;Alignment of length %i&#34; % cat_algn.get_alignment_length())
-
-outfh = open(&#34;superalgn.phy&#34;, &#34;w&#34;)
-AlignIO.write(cat_algn, outfh, &#34;phylip-relaxed&#34;)
-
-outfh.close()</code></pre>
+          <pre class="code-highlight language-html"><code class="html">{{ $year := .Date.Format &#34;2006&#34; }}
+{{ $month := .Date.Format &#34;January&#34; }}
+&lt;h2&gt;&amp;emsp;Archive for {{ $month }} {{ $year }}&lt;/h2&gt;
+{{ range where .Site.Pages &#34;Type&#34; &#34;post&#34; }}
+	{{ if and (eq (.Date.Format &#34;2006&#34;) $year) (eq (.Date.Format &#34;January&#34;) $month) }}
+		{{ partial &#34;post/archive&#34; . }}
+	{{ end }}
+{{ end }}</code></pre>
         </td>
       </tr>
     </tbody>
   </table>
 </figure>
-And the output looks like:</p>
 
-<pre><code> 3 30
-ailuropoda_melanoleuca  GATAATGCTG ACTATAGATT ATTTCAGAAA 
-felis_catus             GATAATGCTG ACTATAGATT ATTTCAGAAA 
-homo_sapiens            GATAATGCTG ACTACAGATT ATTTCAGAAA 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+
+
+<figure class="highlight html language-html">
+  <figcaption>
+    
+      <span>archd.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/partials/archd.html" target="_blank" rel="external">archd.html </a>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-html"><code class="html">{{ $year := .Date.Format &#34;2006&#34; }}
+{{ $month := .Date.Format &#34;January&#34; }}
+{{ $day := .Date.Format &#34;02&#34; }}
+&lt;h2&gt;&amp;emsp;Archive for {{ $month }} {{ $day }} {{ $year }}&lt;/h2&gt;
+{{ range where .Site.Pages &#34;Type&#34; &#34;post&#34; }}
+  	{{ if and (eq (.Date.Format &#34;2006&#34;) $year) (eq (.Date.Format &#34;January&#34;) $month) (eq (.Date.Format &#34;02&#34;) $day)}}
+    	{{ partial &#34;post/archive&#34; . }}
+  	{{ end }}
+{{ end }}</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+
+
+<figure class="highlight html language-html">
+  <figcaption>
+    
+      <span>/layouts/partials/post/archive.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/partials/post/archive.html" target="_blank" rel="external">/layouts/partials/post/archive.html </a>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-html"><code class="html">{{ $year := .Date.Format &#34;2006&#34; }}
+{{ $month := .Date.Format &#34;January&#34; }}
+&lt;section class=&#34;boxes&#34;&gt;
+	&lt;div class=&#34;archive archive-year box&#34; data-date=&#34;{{ $year }}&#34;&gt;
+		&lt;ul class=&#34;archive-posts archive-month&#34; data-date=&#34;{{ $year }}{{ $month }}&#34;&gt;
+			&lt;li class=&#34;archive-post archive-day&#34;&gt;
+     			&lt;a href=&#34;{{ .Permalink }}&#34;&gt;{{ .Title }}&lt;/a&gt;
+     			&lt;span class=&#34;post-date&#34;&gt;{{ .Date.Format &#34;02 Jan 2006&#34; }}&lt;/span&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<h1 id="taxonomy-structure">Taxonomy structure</h1>
+
+<p>The idea is to archive blog posts by date and users can click on the date on the calendar to go to a specific post. In order for this to work, I added a new way of grouping the posts for this website (aka &ldquo;<a href="https://gohugo.io/templates/taxonomy-templates/">Taxonomy</a>&rdquo;). <br></p>
+
+<p>In the configuration file <span class="highlight-text primary">config.toml</span>, add:</p>
+
+<pre><code># prevent hugo from creating folders/indexes for each section
+disableKinds = [&quot;section&quot;]
+
+# adding taxonomy term 'archive'
+[taxonomies]
+    archive = &quot;archive&quot;
 </code></pre>
+
+<p>Then I created a layout file <span class="highlight-text primary">archive.html</span> to <span class="highlight-text orange">layouts/taxonomy/</span> folder.
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+
+
+<figure class="highlight html language-html">
+  <figcaption>
+    
+      <span>/layouts/taxonomy/archive.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/taxonomy/archive.html" target="_blank" rel="external">/layouts/taxonomy/archive.html </a>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-html"><code class="html">{{ partial &#34;head.html&#34; . }}
+{{ partial &#34;head.html&#34; . }}
+  &lt;body&gt;
+    &lt;div id=&#34;blog&#34;&gt;
+      {{ partial &#34;header.html&#34; . }}
+      {{ partial &#34;sidebar.html&#34; . }}
+      &lt;div id=&#34;main&#34; data-behavior=&#34;{{ .Scratch.Get &#34;sidebarBehavior&#34; }}&#34;
+        class=&#34;{{ with .Params.coverImage }}hasCover{{ end }}
+               {{ if eq .Params.coverMeta &#34;out&#34; }}hasCoverMetaOut{{ else }}hasCoverMetaIn{{ end }}
+               {{ with .Params.coverCaption }}hasCoverCaption{{ end }}&#34;&gt;
+
+        {{ $year := .Date.Format &#34;2006&#34; }}
+        {{ $currentTaxonomy := index (last 1 (split (delimit (split .URL &#34;/&#34;) &#34;,&#34; &#34;&#34;) &#34;,&#34;)) 0 }}
+        {{ $regex := index (findRE &#34;-&#34; $currentTaxonomy 2) 1 }}
+    
+        {{ if eq $currentTaxonomy $year }} &lt;!-- archive by year --&gt;
+            {{ partial &#34;archy.html&#34; . }}
+        {{ else if eq $regex &#34;-&#34; }} &lt;!-- archive by day --&gt;
+            {{ partial &#34;archd.html&#34; . }}
+        {{ else }} &lt;!-- archive by month --&gt;
+            {{ partial &#34;archm.html&#34; . }}
+        {{ end }}
+	
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+{{ partial &#34;foot.html&#34; . }}</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>Specific date format and the archive variable is required in the front matter of markdown files:</p>
+
+<pre><code># examplepost.md
+---
+date: 2020-05-07T17:15:22.000Z
+archive: [&quot;2020&quot;,&quot;2020-05&quot;,&quot;2020-05-07&quot;]
+---
+</code></pre>
+
+<h1 id="render-calendar-style">Render calendar style</h1>
+
+<p>I compiled the <a href="https://gohugohq.com/partials/activity-calendar-posts/">styling.scss</a> file to css format at <a href="https://www.sassmeister.com/">sassmeister.com</a>, then added the css file to the <span class="highlight-text orange">statics/css</span> folder. The calendar style (font size, color, etc.) can be altered by editing the css file <span class="highlight-text primary">/static/css/style.css</span>. <br>
+For hugo to reconize customized css files, toggle the customCSS option in <span class="highlight-text primary">config.toml</span>:</p>
+
+<pre><code> # Custom CSS. Put here your custom CSS files. They are loaded after the theme CSS;
+ # they have to be referred from static root. Example
+   [[params.customCSS]]
+     href = &quot;css/style.css&quot;
+</code></pre>
+
+<h1 id="add-the-calendar-to-the-frontpage">Add the calendar to the frontpage</h1>
+
+<p>Call the calendar partial in the <span class="highlight-text orange">layouts/index.html</span> file, and specify start month and end month:</p>
+
+<pre><code>{{ partial &quot;calendar&quot; (dict &quot;context&quot; . &quot;from&quot; 2020 &quot;fromMonth&quot; 1 &quot;to&quot; (now.Format &quot;2006&quot;) &quot;toMonth&quot; (now.Format &quot;1&quot;) &quot;pages&quot; .Site.Pages) }}
+</code></pre>
+
+<p>Now the calendar should be visable on the website! Pretty awesome.</p>
               
             </div>
           </div>
@@ -465,13 +613,11 @@ homo_sapiens            GATAATGCTG ACTACAGATT ATTTCAGAAA
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/python/">python</a>
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/website/">website</a>
 
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/biopython/">Biopython</a>
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/markdown/">markdown</a>
 
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/fasta/">fasta</a>
-
-  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/alignment/">alignment</a>
+  <a class="tag tag--primary tag--small" href="https://yueyvettehao.netlify.app/tags/html/">html</a>
 
                   </div>
                 
@@ -510,13 +656,13 @@ homo_sapiens            GATAATGCTG ACTACAGATT ATTTCAGAAA
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.app/post/2018-09-02-concatenate/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.app/post/2018-09-02-concatenate/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -590,13 +736,13 @@ homo_sapiens            GATAATGCTG ACTACAGATT ATTTCAGAAA
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.app/post/2018-09-02-concatenate/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.app/post/2018-09-02-concatenate/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -626,13 +772,13 @@ homo_sapiens            GATAATGCTG ACTACAGATT ATTTCAGAAA
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.app%2Fpost%2F2018-09-02-concatenate%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fyueyvettehao.netlify.app%2Fpost%2F2020-05-07-activitycalendar%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.app%2Fpost%2F2018-09-02-concatenate%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fyueyvettehao.netlify.app%2Fpost%2F2020-05-07-activitycalendar%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -921,9 +1067,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/yueyvettehao.netlify.app\/post\/2018-09-02-concatenate\/';
+          this.page.url = 'https:\/\/yueyvettehao.netlify.app\/post\/2020-05-07-activitycalendar\/';
           
-            this.page.identifier = '\/post\/2018-09-02-concatenate\/'
+            this.page.identifier = '\/post\/2020-05-07-activitycalendar\/'
           
         };
         (function() {

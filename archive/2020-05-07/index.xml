@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2020 05 07 on Yue Hao 郝樾</title>
+    <link>https://yueyvettehao.netlify.app/archive/2020-05-07/</link>
+    <description>Recent content in 2020 05 07 on Yue Hao 郝樾</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 May 2020 17:15:22 +0000</lastBuildDate>
+    
+	<atom:link href="https://yueyvettehao.netlify.app/archive/2020-05-07/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to add a calendar to Hugo website</title>
+      <link>https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/</link>
+      <pubDate>Thu, 07 May 2020 17:15:22 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/</guid>
+      <description>&lt;p&gt;Today I tadded a calendar to my website, and I was inspired by these two blog posts: &lt;a href=&#34;https://gohugohq.com/partials/activity-calendar-posts/&#34;&gt;Activity Calendar Partial&lt;/a&gt; and &lt;a href=&#34;https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/&#34;&gt;Generate Yearly and Monthly Archive Pages with Hugo Sections&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
