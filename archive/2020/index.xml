@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2020 on Yue Hao 郝樾</title>
+    <link>https://yueyvettehao.netlify.com/archive/2020/</link>
+    <description>Recent content in 2020 on Yue Hao 郝樾</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Apr 2020 21:27:05 +0000</lastBuildDate>
+    
+	<atom:link href="https://yueyvettehao.netlify.com/archive/2020/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-14-curriculumvitae/</link>
+      <pubDate>Tue, 14 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-14-curriculumvitae/</guid>
+      <description>&lt;p&gt;Click here to download my &lt;a href=&#34;https://yueyvettehao.netlify.com/files/yuehao_cv_2020.pdf&#34;&gt;Curriculum Vitae&lt;/a&gt;.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Research Projects</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-13-projects/</link>
+      <pubDate>Mon, 13 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-13-projects/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Research Statement</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-12-research/</link>
+      <pubDate>Sun, 12 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-12-research/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://yueyvettehao.netlify.com/files/yuehao_research_2020.pdf&#34;&gt;Research Statement 2020&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Teaching Statement</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-11-teaching/</link>
+      <pubDate>Sat, 11 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-11-teaching/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://yueyvettehao.netlify.com/files/yuehao_teaching_2020.pdf&#34;&gt;Teaching Statement 2020&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Diversity Statement</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-10-diversity/</link>
+      <pubDate>Fri, 10 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-10-diversity/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://yueyvettehao.netlify.com/files/yuehao_diversity_2020.pdf&#34;&gt;Diversity Statement 2020&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Teaching Example 1</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-09-teaching1/</link>
+      <pubDate>Thu, 09 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-09-teaching1/</guid>
+      <description>&lt;p&gt;Quantitative Biology - Genetic Drift Simulation. &lt;br&gt;
+An in-class programming practice using Jupyter Notebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Teaching Example 2</title>
+      <link>https://yueyvettehao.netlify.com/post/2020-04-08-teaching2/</link>
+      <pubDate>Wed, 08 Apr 2020 21:27:05 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2020-04-08-teaching2/</guid>
+      <description>&lt;p&gt;Engineering Lab - Traffic Light System with Arduino Microcontroller.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

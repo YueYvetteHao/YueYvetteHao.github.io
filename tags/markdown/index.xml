@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Yue Hao 郝樾</title>
+    <link>https://yueyvettehao.netlify.com/tags/markdown/</link>
+    <description>Recent content in Markdown on Yue Hao 郝樾</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://yueyvettehao.netlify.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to embed videos on website</title>
+      <link>https://yueyvettehao.netlify.com/post/2019-03-21-videoembed/</link>
+      <pubDate>Thu, 21 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2019-03-21-videoembed/</guid>
+      <description>&lt;p&gt;This blog post is about how to embed video players on webpages hosted by &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/&#34;&gt;Hugo&lt;/a&gt;.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How to host your personal website on Github using Hugo (2/2)</title>
+      <link>https://yueyvettehao.netlify.com/post/2018-07-26-customize/</link>
+      <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2018-07-26-customize/</guid>
+      <description>&lt;p&gt;Customize the static website with Hugo.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How to host your personal website on Github using Hugo (1/2)</title>
+      <link>https://yueyvettehao.netlify.com/post/2018-07-04-website/</link>
+      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.com/post/2018-07-04-website/</guid>
+      <description>&lt;p&gt;A beginner&amp;rsquo;s tutorial for building a static website on Github with Hugo.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
