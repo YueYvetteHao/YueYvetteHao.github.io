@@ -311,6 +311,7 @@ ga('send', 'pageview');
 <li><a href="#taxonomy-structure">Taxonomy structure</a></li>
 <li><a href="#render-calendar-style">Render calendar style</a></li>
 <li><a href="#add-the-calendar-to-the-frontpage">Add the calendar to the frontpage</a></li>
+<li><a href="#issues-and-solution">Issues and solution</a></li>
 </ul>
 </nav>
 
@@ -335,6 +336,8 @@ ga('send', 'pageview');
 <p><span class="highlight-text primary">calendar.html</span>, <span class="highlight-text primary">year.html</span>, <span class="highlight-text primary">month.html</span>, <span class="highlight-text primary">day.html</span> files were downloaded from the <a href="https://gohugohq.com/partials/activity-calendar-posts/">Activity Calendar</a> blog post. However, I modified the  <span class="highlight-text primary">calendar.html</span> file slightly, changing <code>.GroupByPublishDate</code> to <code>.GroupByDate</code>:</p>
 
 <pre><code>{{ range ($pages.GroupByPublishDate &quot;2006&quot;) }}
+{{ range ($pages.GroupByPublishDate &quot;2006-01&quot;) }}
+{{ range ($pages.GroupByPublishDate &quot;2006-01-02&quot;) }}
 # Change to .GroupByDate
 </code></pre>
 
@@ -538,11 +541,10 @@ disableKinds = [&quot;section&quot;]
     <tbody>
       <tr>
         <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre>
         </td>
         <td class="code">
           <pre class="code-highlight language-html"><code class="html">{{ partial &#34;head.html&#34; . }}
-{{ partial &#34;head.html&#34; . }}
   &lt;body&gt;
     &lt;div id=&#34;blog&#34;&gt;
       {{ partial &#34;header.html&#34; . }}
@@ -594,6 +596,10 @@ For hugo to reconize customized css files, toggle the customCSS option in <span 
      href = &quot;css/style.css&quot;
 </code></pre>
 
+<div class="alert info ">
+  <p>If your website is already using a custom css, simple copy and paste the code for calendar styling into the custom css file.</p>
+</div>
+
 <h1 id="add-the-calendar-to-the-frontpage">Add the calendar to the frontpage</h1>
 
 <p>Call the calendar partial in the <span class="highlight-text orange">layouts/index.html</span> file, and specify start month and end month:</p>
@@ -602,6 +608,55 @@ For hugo to reconize customized css files, toggle the customCSS option in <span 
 </code></pre>
 
 <p>Now the calendar should be visable on the website! Pretty awesome.</p>
+
+<h1 id="issues-and-solution">Issues and solution</h1>
+
+<p><div class="alert warning ">
+  <p>Issue 1: The background circles for &lsquo;calendar days with articles&rsquo; and &lsquo;today&rsquo; are now showing.</p>
+</div>
+Hugo websites with themes such as <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">Tranquilpeak</a> and <a href="https://themes.gohugo.io/hugo-xmag/">XMag</a> display this issue when rendering the calendar.
+<div class="alert success ">
+  <p>Solution:</p>
+</div>
+In the <span class="highlight-text primary">/static/css/style.css</span> file, add <code>opacity: 0.9</code> under <code>.calendar-day.calendar-day-has-articles</code> and <code>.calendar-day.calendar-day-is-today</code>.</p>
+
+<pre><code>.calendar-day.calendar-day-has-articles {
+  color: #ffffff;
+  position: relative;
+  opacity: 0.9;
+}
+.calendar-day.calendar-day-is-today {
+  position: relative;
+  font-weight: 800;
+  color: #ff6600;
+  opacity: 0.9;
+}
+</code></pre>
+
+<p>Also move <code>.calendar-day.calendar-day-future { opacity: 0.4; }</code> to the bottom of the file so that the opacity for future dates renders the last.</p>
+
+<p><div class="alert warning ">
+  <p>Issue 2: Links to categories and tags are not working after adding the calendar to the website.</p>
+</div>
+Hugo websites with theme <a href="https://themes.gohugo.io/hugo-xmag/">XMag</a> may have this problem.
+<div class="alert success ">
+  <p>Solution:</p>
+</div>
+Make sure that the desired taxonomy terms are all included in the <span class="highlight-text primary">config.toml</span> file.</p>
+
+<pre><code>[taxonomies]
+  archive = &quot;archive&quot;
+  tag = &quot;tags&quot;
+  category = &quot;categories&quot;
+</code></pre>
+
+<p><div class="alert warning ">
+  <p>Issue 3: The paginators (both <code>Prev</code> and <code>Next</code>) were broken after adding calendar.</p>
+</div>
+Hugo websites with theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">Tranquilpeak</a> may have this problem.
+<div class="alert info ">
+  <p>Solution coming soon.</p>
+</div></p>
               
             </div>
           </div>
