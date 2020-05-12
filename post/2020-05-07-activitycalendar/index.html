@@ -509,10 +509,7 @@ ga('send', 'pageview');
 
 <p>In the configuration file <span class="highlight-text primary">config.toml</span>, add:</p>
 
-<pre><code># prevent hugo from creating folders/indexes for each section
-disableKinds = [&quot;section&quot;]
-
-# adding taxonomy term 'archive'
+<pre><code># adding taxonomy term 'archive'
 [taxonomies]
     archive = &quot;archive&quot;
 </code></pre>
@@ -597,7 +594,7 @@ For hugo to reconize customized css files, toggle the customCSS option in <span 
 </code></pre>
 
 <div class="alert info ">
-  <p>If your website is already using a custom css, simple copy and paste the code for calendar styling into the custom css file.</p>
+  <p>If your website is already using a custom css, simply copy and paste the code for calendar styling into the custom css file.</p>
 </div>
 
 <h1 id="add-the-calendar-to-the-frontpage">Add the calendar to the frontpage</h1>
@@ -649,14 +646,6 @@ Make sure that the desired taxonomy terms are all included in the <span class="h
   tag = &quot;tags&quot;
   category = &quot;categories&quot;
 </code></pre>
-
-<p><div class="alert warning ">
-  <p>Issue 3: The paginators (both <code>Prev</code> and <code>Next</code>) were broken after adding calendar.</p>
-</div>
-Hugo websites with theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">Tranquilpeak</a> may have this problem.
-<div class="alert info ">
-  <p>Solution coming soon.</p>
-</div></p>
               
             </div>
           </div>
@@ -693,7 +682,7 @@ Hugo websites with theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-the
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.app/post/2020-04-14-curriculumvitae/" data-tooltip="Curriculum Vitae">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -773,7 +762,7 @@ Hugo websites with theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-the
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.app/post/2020-04-14-curriculumvitae/" data-tooltip="Curriculum Vitae">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
