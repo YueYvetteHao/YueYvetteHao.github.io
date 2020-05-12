@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://yueyvettehao.netlify.app/post/test/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yueyvettehao.netlify.app/post/2020-05-07-activitycalendar/</loc>
     <lastmod>2020-05-07T17:15:22+00:00</lastmod>
   </url>
@@ -94,7 +89,7 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/archive/2020/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,13 +143,13 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/archive/2020-05/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yueyvettehao.netlify.app/archive/2020-05-07/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -166,7 +161,7 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/archive/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -178,13 +173,13 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/categories/blog/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yueyvettehao.netlify.app/categories/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -208,13 +203,13 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/tags/html/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yueyvettehao.netlify.app/tags/markdown/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -248,20 +243,20 @@
   </url>
   
   <url>
-    <loc>https://yueyvettehao.netlify.app/categories/portfolio/</loc>
-    <lastmod>2020-04-14T21:27:05+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yueyvettehao.netlify.app/tags/portfolio/</loc>
     <lastmod>2020-04-14T21:27:05+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://yueyvettehao.netlify.app/categories/portfolio/</loc>
+    <lastmod>2020-04-14T21:27:05+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yueyvettehao.netlify.app/post/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -309,7 +304,7 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/tags/website/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -327,7 +322,7 @@
   
   <url>
     <loc>https://yueyvettehao.netlify.app/</loc>
-    <lastmod>2020-05-07T21:15:22+00:00</lastmod>
+    <lastmod>2020-05-07T17:15:22+00:00</lastmod>
     <priority>0</priority>
   </url>
   
