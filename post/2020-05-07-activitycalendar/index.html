@@ -346,73 +346,22 @@ However, I edited the <span class="highlight-text primary">calendar.html</span> 
 {{ end }}
 </code></pre>
 
-<p>Then edit <span class="highlight-text primary">day.html</span>:
+<p>Then edit <span class="highlight-text primary">day.html</span>, add these lines:</p>
 
-  
-    
-  
-  
-    
-  
-  
-    
-  
-  
+<pre><code>{{ $link := $context.Scratch.Get $dateString  }}
 
-
-<figure class="highlight html language-html">
-  <figcaption>
-    
-      <span>day.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/partials/calendar/day.html" target="_blank" rel="external">day.html </a>
-    
-  </figcaption>
-  <table>
-    <tbody>
-      <tr>
-        <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre>
-        </td>
-        <td class="code">
-          <pre class="code-highlight language-html"><code class="html">{{ $context := .context }}
-{{ $year := .year }}
-{{ $pages := .pages }}
-
-{{ $day := .day }}
-{{ $dayTwoLetters := printf &#34;%02d&#34; $day }}
-{{ $pageMap := .pagemap }}
-
-{{ $month := .month }}
-{{ $monthTwoLetters := printf &#34;%02d&#34; $month }}
-
-{{ $dateString := (string (delimit (slice $year $monthTwoLetters $dayTwoLetters) &#34;-&#34;)) }}
-
-{{ $link := $context.Scratch.Get $dateString  }}
-
-{{ $context.Scratch.Set &#34;isFuture&#34; false }}
-
-{{ if le now (time $dateString) }}
-    {{ $context.Scratch.Set &#34;isFuture&#34; true }}
-{{ end }}
-
-{{ $isFuture := $context.Scratch.Get &#34;isFuture&#34; }}
-
-{{- $articlesFound := index ($context.Scratch.Get &#34;ArticlesPerDay&#34;) $dateString -}}
-&lt;li class=&#34;calendar-day {{ if $isFuture }}calendar-day-future{{ end }} {{ if gt $articlesFound 0 }}calendar-day-has-articles{{ end }} {{ if eq (now.Format &#34;2006-01-02&#34;) $dateString }}calendar-day-is-today{{ end }}&#34;&gt;
+&lt;li class=&quot;calendar-day {{ if $isFuture }}calendar-day-future{{ end }} {{ if gt $articlesFound 0 }}calendar-day-has-articles{{ end }} {{ if eq (now.Format &quot;2006-01-02&quot;) $dateString }}calendar-day-is-today{{ end }}&quot;&gt;
     {{- if eq $articlesFound 1 -}} &lt;!-- exactly one article that day --&gt;
-        &lt;a href=&#34;{{ $link }}&#34;&gt;
-        &lt;time datetime=&#34;{{ $dateString }}&#34;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
+        &lt;a href=&quot;{{ $link }}&quot; title=&quot;{{ $articlesFound }} article&quot;&gt;
+        &lt;time datetime=&quot;{{ $dateString }}&quot;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
     {{- else if gt $articlesFound 1 -}} &lt;!-- multiple articles on one day --&gt;
-        &lt;a href=&#34;/archive/{{ delimit (slice $year $monthTwoLetters $dayTwoLetters) &#34;-&#34; }}/&#34; title=&#34;{{ $articlesFound }} article{{ if gt $articlesFound 1 }}s{{ end }}&#34;&gt;
-        &lt;time datetime=&#34;{{ $dateString }}&#34;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
+        &lt;a href=&quot;/archive/{{ delimit (slice $year $monthTwoLetters $dayTwoLetters) &quot;-&quot; }}/&quot; title=&quot;{{ $articlesFound }} article{{ if gt $articlesFound 1 }}s{{ end }}&quot;&gt;
+        &lt;time datetime=&quot;{{ $dateString }}&quot;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
     {{- else -}} &lt;!-- no articles that day --&gt;
-        &lt;time datetime=&#34;{{ $dateString }}&#34;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;
+        &lt;time datetime=&quot;{{ $dateString }}&quot;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;
     {{- end -}}
-&lt;/li&gt;</code></pre>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</figure></p>
+&lt;/li&gt;
+</code></pre>
 
 <p>The code for three types of listing (by year, month or day) were partly adapted from templates provided in <a href="https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/">Generate Yearly and Monthly Archive Pages with Hugo Sections</a>.
 
