@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Yue Hao 郝樾</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 May 2020 17:15:22 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2020 21:15:22 +0000</lastBuildDate>
     
 	<atom:link href="https://yueyvettehao.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Test Test</title>
+      <link>https://yueyvettehao.netlify.app/post/test/</link>
+      <pubDate>Thu, 07 May 2020 21:15:22 +0000</pubDate>
+      
+      <guid>https://yueyvettehao.netlify.app/post/test/</guid>
+      <description>&lt;p&gt;Today I added a calendar to my website, and I was inspired by these two blog posts: &lt;a href=&#34;https://gohugohq.com/partials/activity-calendar-posts/&#34;&gt;Activity Calendar Partial&lt;/a&gt; and &lt;a href=&#34;https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/&#34;&gt;Generate Yearly and Monthly Archive Pages with Hugo Sections&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How to add a calendar to Hugo website</title>

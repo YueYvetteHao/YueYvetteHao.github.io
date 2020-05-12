@@ -317,7 +317,7 @@ ga('send', 'pageview');
 
 <h1 id="partials-file-structure">Partials file structure</h1>
 
-<p>Here are the partial files I created in the <span class="highlight-text orange">layouts/partials/</span> folder and they were organized in the following structure.</p>
+<p>Here are the <a href="https://gohugo.io/templates/partials/">partial</a> files I created in the <span class="highlight-text orange">layouts/partials/</span> folder and they were organized in the following structure.</p>
 
 <pre><code>|-- layouts
 |  |-- partials
@@ -333,13 +333,86 @@ ga('send', 'pageview');
 |  |  |  |-- archive.html
 </code></pre>
 
-<p><span class="highlight-text primary">calendar.html</span>, <span class="highlight-text primary">year.html</span>, <span class="highlight-text primary">month.html</span>, <span class="highlight-text primary">day.html</span> files were downloaded from the <a href="https://gohugohq.com/partials/activity-calendar-posts/">Activity Calendar</a> blog post. However, I modified the  <span class="highlight-text primary">calendar.html</span> file slightly, changing <code>.GroupByPublishDate</code> to <code>.GroupByDate</code>:</p>
+<p><span class="highlight-text primary">calendar.html</span>, <span class="highlight-text primary">year.html</span>, <span class="highlight-text primary">month.html</span>, <span class="highlight-text primary">day.html</span> files were downloaded from the <a href="https://gohugohq.com/partials/activity-calendar-posts/">Activity Calendar</a> blog post.
+However, I edited the <span class="highlight-text primary">calendar.html</span> and <span class="highlight-text primary">day.html</span> files to allow users to click on the dates in the calendar and go directly to the article (if there was only one article posted on that day).</p>
 
-<pre><code>{{ range ($pages.GroupByPublishDate &quot;2006&quot;) }}
-{{ range ($pages.GroupByPublishDate &quot;2006-01&quot;) }}
-{{ range ($pages.GroupByPublishDate &quot;2006-01-02&quot;) }}
-# Change to .GroupByDate
+<p>In <span class="highlight-text primary">calendar.html</span> under <code>{{ range ($pages.GroupByPublishDate &quot;2006-01-02&quot;) }}</code>, add:</p>
+
+<pre><code>{{ range ($pages.GroupByPublishDate &quot;2006-01-02&quot;) }}
+    {{ $context.Scratch.SetInMap &quot;ArticlesPerDay&quot; .Key (len .Pages) }}
+    {{ range .Pages }}
+        {{ $context.Scratch.Set (.PublishDate.Format &quot;2006-01-02&quot;) .Permalink }}
+    {{ end }}
+{{ end }}
 </code></pre>
+
+<p>Then edit <span class="highlight-text primary">day.html</span>:
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+
+
+<figure class="highlight html language-html">
+  <figcaption>
+    
+      <span>day.html </span><a href="https://github.com/YueYvetteHao/Yue_blog/blob/master/layouts/partials/calendar/day.html" target="_blank" rel="external">day.html </a>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-html"><code class="html">{{ $context := .context }}
+{{ $year := .year }}
+{{ $pages := .pages }}
+
+{{ $day := .day }}
+{{ $dayTwoLetters := printf &#34;%02d&#34; $day }}
+{{ $pageMap := .pagemap }}
+
+{{ $month := .month }}
+{{ $monthTwoLetters := printf &#34;%02d&#34; $month }}
+
+{{ $dateString := (string (delimit (slice $year $monthTwoLetters $dayTwoLetters) &#34;-&#34;)) }}
+
+{{ $link := $context.Scratch.Get $dateString  }}
+
+{{ $context.Scratch.Set &#34;isFuture&#34; false }}
+
+{{ if le now (time $dateString) }}
+    {{ $context.Scratch.Set &#34;isFuture&#34; true }}
+{{ end }}
+
+{{ $isFuture := $context.Scratch.Get &#34;isFuture&#34; }}
+
+{{- $articlesFound := index ($context.Scratch.Get &#34;ArticlesPerDay&#34;) $dateString -}}
+&lt;li class=&#34;calendar-day {{ if $isFuture }}calendar-day-future{{ end }} {{ if gt $articlesFound 0 }}calendar-day-has-articles{{ end }} {{ if eq (now.Format &#34;2006-01-02&#34;) $dateString }}calendar-day-is-today{{ end }}&#34;&gt;
+    {{- if eq $articlesFound 1 -}} &lt;!-- exactly one article that day --&gt;
+        &lt;a href=&#34;{{ $link }}&#34;&gt;
+        &lt;time datetime=&#34;{{ $dateString }}&#34;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
+    {{- else if gt $articlesFound 1 -}} &lt;!-- multiple articles on one day --&gt;
+        &lt;a href=&#34;/archive/{{ delimit (slice $year $monthTwoLetters $dayTwoLetters) &#34;-&#34; }}/&#34; title=&#34;{{ $articlesFound }} article{{ if gt $articlesFound 1 }}s{{ end }}&#34;&gt;
+        &lt;time datetime=&#34;{{ $dateString }}&#34;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
+    {{- else -}} &lt;!-- no articles that day --&gt;
+        &lt;time datetime=&#34;{{ $dateString }}&#34;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;
+    {{- end -}}
+&lt;/li&gt;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
 
 <p>The code for three types of listing (by year, month or day) were partly adapted from templates provided in <a href="https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/">Generate Yearly and Monthly Archive Pages with Hugo Sections</a>.
 
@@ -514,7 +587,8 @@ ga('send', 'pageview');
     archive = &quot;archive&quot;
 </code></pre>
 
-<p>Then I created a layout file <span class="highlight-text primary">archive.html</span> to <span class="highlight-text orange">layouts/taxonomy/</span> folder.
+<p>Then I created a layout file <span class="highlight-text primary">archive.html</span> to <span class="highlight-text orange">layouts/taxonomy/</span> folder.<br>
+Here I used a Hugo function <a href="https://gohugo.io/functions/findre/">findRE</a>, which returns a list of strings that match the given regular expression.
 
   
     
@@ -611,7 +685,7 @@ For hugo to reconize customized css files, toggle the customCSS option in <span 
 <p><div class="alert warning ">
   <p>Issue 1: The background circles for &lsquo;calendar days with articles&rsquo; and &lsquo;today&rsquo; are now showing.</p>
 </div>
-Hugo websites with themes such as <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">Tranquilpeak</a> and <a href="https://themes.gohugo.io/hugo-xmag/">XMag</a> display this issue when rendering the calendar.
+Hugo websites with themes such as <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme/">Tranquilpeak</a> and <a href="https://themes.gohugo.io/hugo-xmag/">XMag</a> may have this issue when rendering the calendar.
 <div class="alert success ">
   <p>Solution:</p>
 </div>
@@ -646,6 +720,21 @@ Make sure that the desired taxonomy terms are all included in the <span class="h
   tag = &quot;tags&quot;
   category = &quot;categories&quot;
 </code></pre>
+
+<p><div class="alert warning ">
+  <p>Issue 3: Days with articles are not correctly displayed in the calendar.</p>
+</div>
+Hugo websites with theme <a href="https://themes.gohugo.io/hugo-xmag/">XMag</a> may have this problem.
+<div class="alert success ">
+  <p>Solution:</p>
+</div>
+Try changing <code>.GroupByPublishDate</code> to <code>.GroupByDate</code> in the <span class="highlight-text primary">layouts/partials/calendar.html</span> file.</p>
+
+<pre><code>{{ range ($pages.GroupByPublishDate &quot;2006&quot;)   }}
+{{ range ($pages.GroupByPublishDate &quot;2006-01&quot;)  }}
+{{ range ($pages.GroupByPublishDate &quot;2006-01-02&quot;) }}
+# Change to .GroupByDate
+</code></pre>
               
             </div>
           </div>
@@ -674,7 +763,7 @@ Make sure that the desired taxonomy terms are all included in the <span class="h
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.app/post/test/" data-tooltip="Test Test">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -754,7 +843,7 @@ Make sure that the desired taxonomy terms are all included in the <span class="h
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://yueyvettehao.netlify.app/post/test/" data-tooltip="Test Test">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -879,6 +968,25 @@ Make sure that the desired taxonomy terms are all included in the <span class="h
       <div class="no-result text-color-light text-center">no post found</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://yueyvettehao.netlify.app/post/test/">
+                <h3 class="media-heading">Test Test</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Today I added a calendar to my website, and I was inspired by these two blog posts: <a href="https://gohugohq.com/partials/activity-calendar-posts/">Activity Calendar Partial</a> and <a href="https://blog.atj.me/2017/10/generate-yearly-and-monthly-archive-pages-with-hugo-sections/">Generate Yearly and Monthly Archive Pages with Hugo Sections</a>.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -1045,24 +1153,6 @@ An in-class programming practice using Jupyter Notebook.</p>
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://yueyvettehao.netlify.app/post/2019-03-09-writing/">
-                <h3 class="media-heading">浅谈英文写作</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>近日, <a href="http://cgmonline.co/">北美华人基因组学在线沙龙</a>（Chinese Genomics online Meet-up, CGM）在其官方微信公众号中发布了一篇关于<strong>如何提升英文科技论文写作能力</strong>的<a href="https://mp.weixin.qq.com/s?__biz=MzIxMTk0ODkyMg==&amp;mid=2247483689&amp;idx=1&amp;sn=fa845ca6349b5e27dd7a373cb00a2e59&amp;chksm=974cc53ca03b4c2a6600b6d0d44e4435a6c6ce2005c7df47e19418eef0d4ad3a378046cf0c07&amp;mpshare=1&amp;scene=1&amp;srcid=0226c2X9zVNRc6BT9coiSOA2#rd">文章</a>，我阅读后觉得收获很大。
-</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1070,7 +1160,7 @@ An in-class programming practice using Jupyter Notebook.</p>
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         17 posts found
+         18 posts found
       </p>
     </div>
   </div>
