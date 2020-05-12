@@ -352,7 +352,7 @@ However, I edited the <span class="highlight-text primary">calendar.html</span> 
 
 &lt;li class=&quot;calendar-day {{ if $isFuture }}calendar-day-future{{ end }} {{ if gt $articlesFound 0 }}calendar-day-has-articles{{ end }} {{ if eq (now.Format &quot;2006-01-02&quot;) $dateString }}calendar-day-is-today{{ end }}&quot;&gt;
     {{- if eq $articlesFound 1 -}} &lt;!-- exactly one article that day --&gt;
-        &lt;a href=&quot;{{ $link }}&quot; title=&quot;{{ $articlesFound }} article&quot;&gt;
+        &lt;a href=&quot;{{ $link }}&quot; title=&quot;{{ index (last 1 (split (delimit (split $link &quot;/&quot;) &quot;,&quot; &quot;&quot;) &quot;,&quot;)) 0 }}&quot;&gt;
         &lt;time datetime=&quot;{{ $dateString }}&quot;&gt;{{ $day }}&lt;em&gt;{{ $articlesFound }}&lt;/em&gt;&lt;/time&gt;&lt;/a&gt;
     {{- else if gt $articlesFound 1 -}} &lt;!-- multiple articles on one day --&gt;
         &lt;a href=&quot;/archive/{{ delimit (slice $year $monthTwoLetters $dayTwoLetters) &quot;-&quot; }}/&quot; title=&quot;{{ $articlesFound }} article{{ if gt $articlesFound 1 }}s{{ end }}&quot;&gt;
