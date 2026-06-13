@@ -9,6 +9,13 @@ theme = "hugo-tranquilpeak-theme"
 paginate = 7
 canonifyurls = true
 
+[services.googleAnalytics]
+  ID = "G-JBMFYHYMTW"
+
+[privacy.googleAnalytics]
+  anonymizeIP = true
+  respectDoNotTrack = true
+
 [permalinks]
   posts = "/:year/:month/:slug/"
 
@@ -86,12 +93,6 @@ canonifyurls = true
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-dna\" aria-hidden=\"true\"></i>"
   url = "https://www.ncbi.nlm.nih.gov/myncbi/yue.hao.5/bibliography/public/"
 
-[[menu.misc]]
-  weight = 1
-  identifier = "rss"
-  name = "RSS"
-  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-rss\" aria-hidden=\"true\"></i>"
-  url = "/index.xml"
 
 # -------------
 # Customization

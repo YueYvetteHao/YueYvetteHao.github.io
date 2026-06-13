@@ -1,6 +1,7 @@
 ---
 title: "Projects"
 showTags: false
+showDate: false
 ---
 
 ## Nom or Not
