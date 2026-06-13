@@ -7,7 +7,7 @@ showDate: false
 ## Nom or Not
 
 A web app for tracking whether your cats actually eat their food — log each feeding and turn it into insights like favorite flavors, most-refused foods, and a Picky Meter ranking.
-👉 [Give it a spin](https://nom-or-not.vercel.app/)
+👉 [Give it a spin](https://nom-or-not.vercel.app/) · [Read the blog post]({{< ref "/posts/nom-or-not" >}})
 
 
 ## BoardGameFinder
