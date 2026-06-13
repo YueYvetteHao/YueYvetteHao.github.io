@@ -1,6 +1,6 @@
 ---
 title: "To Nom or Not to Nom: Tracking Feline Pickiness"
-date: 2026-06-11
+date: 2026-06-12
 categories:
   - projects
 tags:
