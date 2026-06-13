@@ -57,16 +57,16 @@ canonifyurls = true
 
 [[menu.links]]
   weight = 1
-  identifier = "github"
-  name = "GitHub"
-  pre = "<i class=\"sidebar-button-icon fab fa-lg fa-github\" aria-hidden=\"true\"></i>"
-  url = "https://github.com/YueYvetteHao"
-[[menu.links]]
-  weight = 2
   identifier = "linkedin"
   name = "LinkedIn"
   pre = "<i class=\"sidebar-button-icon fab fa-lg fa-linkedin\" aria-hidden=\"true\"></i>"
   url = "https://www.linkedin.com/in/yuehao/"
+[[menu.links]]
+  weight = 2
+  identifier = "github"
+  name = "GitHub"
+  pre = "<i class=\"sidebar-button-icon fab fa-lg fa-github\" aria-hidden=\"true\"></i>"
+  url = "https://github.com/YueYvetteHao"
 [[menu.links]]
   weight = 3
   identifier = "huggingface"
@@ -81,18 +81,6 @@ canonifyurls = true
   url = "https://scholar.google.com/citations?user=Yf8nU2YAAAAJ&hl=en"
 [[menu.links]]
   weight = 5
-  identifier = "orcid"
-  name = "ORCiD"
-  pre = "<i class=\"sidebar-button-icon fab fa-lg fa-orcid\" aria-hidden=\"true\"></i>"
-  url = "https://orcid.org/0000-0002-5065-8906"
-[[menu.links]]
-  weight = 6
-  identifier = "credly"
-  name = "Credly"
-  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-award\" aria-hidden=\"true\"></i>"
-  url = "https://www.credly.com/users/yueyvettehao"
-[[menu.links]]
-  weight = 7
   identifier = "ncbi"
   name = "NCBI Bibliography"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-dna\" aria-hidden=\"true\"></i>"

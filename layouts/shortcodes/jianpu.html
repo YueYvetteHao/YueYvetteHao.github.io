@@ -1,0 +1,255 @@
+<!-- Interactive Jianpu (numbered notation) renderer + Web Audio player -->
+<div class="jianpu-widget">
+  <label class="jp-label"><strong>Jianpu input:</strong></label>
+  <textarea id="jpInput">3-3561'1'65-565---</textarea>
+
+  <div class="jp-controls">
+    <div>
+      <label>Tempo (BPM): <span id="jpBpmValue">120</span></label>
+      <input type="range" id="jpBpm" min="60" max="180" value="120">
+    </div>
+    <div>
+      <label>Key:
+        <select id="jpKey">
+          <option value="0">1=C</option>
+          <option value="2">1=D</option>
+          <option value="5">1=F</option>
+          <option value="7">1=G</option>
+        </select>
+      </label>
+    </div>
+    <button type="button" onclick="jpStartPlay()">&#9654; Play</button>
+    <button type="button" class="jp-stop" onclick="jpStopPlay()">&#9209; Stop</button>
+    <button type="button" class="jp-secondary" onclick="jpRender()">&#128260; Re-render</button>
+  </div>
+
+  <div id="jpScore" class="jp-score"></div>
+
+  <p class="jp-hint">Numbers <code>1</code>–<code>7</code> are notes, <code>-</code> extends the
+  previous note by a beat, <code>'</code> raises an octave, <code>,</code> lowers one. Edit the box
+  and hit Play.</p>
+</div>
+
+<style>
+  .jianpu-widget {
+    background: #fff;
+    border: 1px solid #e0d8b0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin: 24px 0;
+    color: #333;
+  }
+  .jianpu-widget .jp-label { display: block; margin-bottom: 8px; }
+  .jianpu-widget textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 70px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: monospace;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+  }
+  .jianpu-widget .jp-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 16px 0;
+    align-items: center;
+  }
+  .jianpu-widget button {
+    padding: 8px 16px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background 0.2s;
+  }
+  .jianpu-widget button:hover { background-color: #0056b3; }
+  .jianpu-widget button.jp-stop { background-color: #dc3545; }
+  .jianpu-widget button.jp-stop:hover { background-color: #a71d2a; }
+  .jianpu-widget button.jp-secondary { background-color: #6c757d; }
+  .jianpu-widget button.jp-secondary:hover { background-color: #565e64; }
+  .jianpu-widget .jp-score {
+    margin-top: 24px;
+    padding: 20px;
+    background: #fffdf5;
+    border: 1px solid #e0d8b0;
+    border-radius: 8px;
+    min-height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 28px;
+    line-height: 2;
+    column-gap: 8px;
+    row-gap: 20px;
+  }
+  .jianpu-widget .jp-note-group {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border-radius: 4px;
+    transition: background-color 0.1s;
+  }
+  .jianpu-widget .jp-note-group.active {
+    background-color: #ffeb3b;
+    color: #d32f2f;
+    font-weight: bold;
+  }
+  .jianpu-widget .jp-note-number {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+  }
+  .jianpu-widget .jp-high::before {
+    content: '\2022';
+    position: absolute;
+    top: -22px; left: 0; right: 0;
+    font-size: 24px;
+    color: currentColor;
+  }
+  .jianpu-widget .jp-low::after {
+    content: '\2022';
+    position: absolute;
+    bottom: -22px; left: 0; right: 0;
+    font-size: 24px;
+    color: currentColor;
+  }
+  .jianpu-widget .jp-dash {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+  .jianpu-widget .jp-hint { font-size: 14px; color: #666; margin-top: 16px; line-height: 1.5; }
+</style>
+
+<script>
+(function () {
+  var audioCtx = null;
+  var isPlaying = false;
+  var parsedEvents = [];
+
+  var baseFrequencies = {
+    '1': 261.63, '2': 293.66, '3': 329.63, '4': 349.23,
+    '5': 392.00, '6': 440.00, '7': 493.88
+  };
+
+  function parseJianpu(text) {
+    var events = [];
+    var currentNote = null;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (/[1-7]/.test(ch)) {
+        if (currentNote) events.push(currentNote);
+        currentNote = { pitch: ch, octave: 0, beats: 1, domElement: null };
+      } else if (ch === "'") {
+        if (currentNote) currentNote.octave += 1;
+      } else if (ch === ",") {
+        if (currentNote) currentNote.octave -= 1;
+      } else if (ch === "-") {
+        if (currentNote) currentNote.beats += 1;
+      }
+    }
+    if (currentNote) events.push(currentNote);
+    return events;
+  }
+
+  window.jpRender = function () {
+    var input = document.getElementById('jpInput').value;
+    parsedEvents = parseJianpu(input);
+    var display = document.getElementById('jpScore');
+    display.innerHTML = '';
+    parsedEvents.forEach(function (event) {
+      var groupDiv = document.createElement('div');
+      groupDiv.className = 'jp-note-group';
+      var numSpan = document.createElement('span');
+      numSpan.className = 'jp-note-number';
+      numSpan.textContent = event.pitch;
+      if (event.octave > 0) numSpan.classList.add('jp-high');
+      if (event.octave < 0) numSpan.classList.add('jp-low');
+      groupDiv.appendChild(numSpan);
+      for (var i = 1; i < event.beats; i++) {
+        var dashSpan = document.createElement('span');
+        dashSpan.className = 'jp-dash';
+        dashSpan.textContent = '-';
+        groupDiv.appendChild(dashSpan);
+      }
+      event.domElement = groupDiv;
+      display.appendChild(groupDiv);
+    });
+  };
+
+  function playTone(frequency, durationMs) {
+    if (!audioCtx) return;
+    var oscillator = audioCtx.createOscillator();
+    var gainNode = audioCtx.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = frequency;
+    var t = audioCtx.currentTime;
+    var dur = durationMs / 1000;
+    gainNode.gain.setValueAtTime(0, t);
+    gainNode.gain.linearRampToValueAtTime(0.8, t + 0.05);
+    gainNode.gain.setValueAtTime(0.8, t + dur - 0.05);
+    gainNode.gain.linearRampToValueAtTime(0, t + dur);
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    oscillator.start();
+    oscillator.stop(t + dur);
+  }
+
+  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
+
+  window.jpStartPlay = async function () {
+    if (isPlaying) return;
+    isPlaying = true;
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    window.jpRender();
+    var bpm = parseInt(document.getElementById('jpBpm').value, 10);
+    var keyOffset = parseInt(document.getElementById('jpKey').value, 10);
+    var beatDurationMs = (60 / bpm) * 1000;
+    for (var i = 0; i < parsedEvents.length; i++) {
+      if (!isPlaying) break;
+      var event = parsedEvents[i];
+      var noteDurationMs = event.beats * beatDurationMs;
+      var freq = baseFrequencies[event.pitch];
+      freq = freq * Math.pow(2, keyOffset / 12);
+      freq = freq * Math.pow(2, event.octave);
+      event.domElement.classList.add('active');
+      playTone(freq, noteDurationMs);
+      await sleep(noteDurationMs);
+      if (event.domElement) event.domElement.classList.remove('active');
+    }
+    isPlaying = false;
+  };
+
+  window.jpStopPlay = function () {
+    isPlaying = false;
+    parsedEvents.forEach(function (e) {
+      if (e.domElement) e.domElement.classList.remove('active');
+    });
+  };
+
+  function init() {
+    var bpm = document.getElementById('jpBpm');
+    if (bpm) {
+      bpm.addEventListener('input', function (e) {
+        document.getElementById('jpBpmValue').textContent = e.target.value;
+      });
+    }
+    window.jpRender();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

@@ -3,22 +3,24 @@ title: "Projects"
 showTags: false
 ---
 
-## BoardGameFinder
-
-A board game recommendation demo built with Hugging Face Spaces.
-👉 [Try it live](https://huggingface.co/spaces/yueyvettehao/BoardGameFinder)
-
-## Data Viz Portfolio
-
-A gallery of interactive data visualizations, built with Streamlit.
-👉 [Explore the gallery](https://datavizgallery-yuehao.streamlit.app/)
-
 ## Nom or Not
 
-A playful web app for deciding what to eat.
+A web app for tracking whether your cats actually eat their food — log each feeding and turn it into insights like favorite flavors, most-refused foods, and a Picky Meter ranking.
 👉 [Give it a spin](https://nom-or-not.vercel.app/)
+
+
+## BoardGameFinder
+
+A conversational board game recommender powered by a Retrieval-Augmented Generation (RAG) system: it embeds your query, runs a similarity search over 20,000+ BoardGameGeek titles in Pinecone, then uses Llama 3.1 8B (via Groq) to pick the best matches and explain why. Built with LangChain and Gradio on Hugging Face Spaces.
+👉 [Try it live](https://huggingface.co/spaces/yueyvettehao/BoardGameFinder)
+
+## Chinese Folk Music
+
+An ongoing project exploring Chinese folk music, comparing tunes from different regions. 👉 Try the [interactive jianpu player]({{< ref "/posts/jianpu-player" >}}), a proof-of-concept demo that reads numbered notation and plays it back in the browser.
+
+[Variations on a Theme of Folk Songs from Shaanxi](https://youtu.be/zjbXUn2w-Rw?si=zY8wAVjMbBM1Mpfh).
 
 ## Beso Elite Music Academy
 
-Website for a music academy.
+Website for Ms. Sophia's piano studio.
 👉 [Visit the site](https://www.besoelitemusic.com/)
