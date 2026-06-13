@@ -7,7 +7,7 @@ Personal portfolio built with [Hugo](https://gohugo.io) and the [Tranquilpeak th
 1. Create a GitHub repo named **`YueYvetteHao.github.io`** (public).
 2. Push this folder:
    ```bash
-   git remote add origin https://github.com/YueYvetteHao/YueYvetteHao.github.io.git
+   git remote add origin git@github.com:YueYvetteHao/YueYvetteHao.github.io.git
    git push -u origin main
    ```
 3. On GitHub: **Settings → Pages → Build and deployment → Source = "GitHub Actions"**.
