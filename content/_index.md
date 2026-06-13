@@ -28,8 +28,13 @@ I'm a data scientist with a research background in computational biology. I like
 - [NCBI Bibliography](https://www.ncbi.nlm.nih.gov/myncbi/yue.hao.5/bibliography/public/)
 - [ORCiD](https://orcid.org/0000-0002-5065-8906)
 
-## Art and music
+## Art & music
 
 - [Paintings](https://www.instagram.com/wigglycat/)
 - [Piano](https://www.youtube.com/@yueyvettehao)
 - [Beso Elite Music Academy](https://www.besoelitemusic.com/)
+
+## Reading & games
+
+- [Bookshelf](https://www.goodreads.com/user/show/136561151-yue-hao) — what I'm reading, on Goodreads
+- [Board games](https://www.bilibili.com/video/BV1gxc7zpEwC/) — guest spot on Sister Ma's 2025 board game year-in-review
