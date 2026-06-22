@@ -4,6 +4,11 @@ showTags: false
 showDate: false
 ---
 
+## Semblance
+
+A multi-agent system that semantically compares GSEA enrichment results — matching biological *programs* rather than overlapping gene-set names. Four LLM agents (preprocessor, orchestrator, interpreter, verifier) act as an **MCP** client calling a deterministic **MCP** server that owns all the math, so the model interprets and verifies but never computes the similarity itself. It embeds pathways with a biomedical language model, adds RAG-grounded cross-ontology explanations, and re-checks every claim against the engine's numbers as a hallucination guard. Built with Gradio, FastMCP, and Groq on Hugging Face Spaces.
+👉 [Try it live](https://huggingface.co/spaces/yueyvettehao/Semblance)
+
 ## Nom or Not
 
 A web app for tracking whether your cats actually eat their food — log each feeding and turn it into insights like favorite flavors, most-refused foods, and a Picky Meter ranking.
