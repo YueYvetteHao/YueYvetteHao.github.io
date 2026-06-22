@@ -1,5 +1,5 @@
 ---
-title: "A Tiny Jianpu Player in the Browser"
+title: "A Tiny Jianpu 简谱 Player in the Browser"
 date: 2026-06-11
 categories:
   - projects
@@ -10,7 +10,7 @@ tags:
 slug: jianpu-player
 ---
 
-If you grew up learning music in China, you probably read *jianpu* — numbered musical notation, where `1`–`7` stand in for do-re-mi instead of dots on a staff. It's compact, easy to scribble, and surprisingly fun to parse with code. So I built a little player that reads jianpu text, lays it out, and plays it back right in the browser.
+If you grew up learning music in China, you probably read *jianpu* (简谱) — numbered musical notation, where `1`–`7` stand in for do-re-mi instead of dots on a staff. It's compact, easy to scribble, and surprisingly fun to parse with code. So I built a little player that reads jianpu text, lays it out, and plays it back right in the browser.
 
 <!--more-->
 

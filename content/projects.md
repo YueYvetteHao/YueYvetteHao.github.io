@@ -22,7 +22,7 @@ A conversational board game recommender powered by a Retrieval-Augmented Generat
 
 ## Chinese Folk Music
 
-An ongoing project exploring Chinese folk music, comparing tunes from different regions. 👉 Try the [interactive jianpu player]({{< ref "/posts/jianpu-player" >}}), a proof-of-concept demo that reads numbered notation and plays it back in the browser.
+An ongoing project exploring Chinese folk music, comparing tunes from different regions. 👉 Try the [interactive jianpu 简谱 player]({{< ref "/posts/jianpu-player" >}}), a proof-of-concept demo that reads numbered notation and plays it back in the browser.
 
 [Variations on a Theme of Folk Songs from Shaanxi](https://youtu.be/zjbXUn2w-Rw?si=zY8wAVjMbBM1Mpfh).
 
