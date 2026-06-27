@@ -209,7 +209,14 @@
     if (isPlaying) return;
     isPlaying = true;
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
+    // iOS: resume must complete within the user gesture before scheduling notes
+    if (audioCtx.state === 'suspended') await audioCtx.resume();
+    // iOS unlock: play a 1-sample silent buffer to fully wake the audio output
+    var unlockBuf = audioCtx.createBuffer(1, 1, 22050);
+    var unlockSrc = audioCtx.createBufferSource();
+    unlockSrc.buffer = unlockBuf;
+    unlockSrc.connect(audioCtx.destination);
+    unlockSrc.start(0);
     window.jpRender();
     var bpm = parseInt(document.getElementById('jpBpm').value, 10);
     var keyOffset = parseInt(document.getElementById('jpKey').value, 10);
