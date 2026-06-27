@@ -11,8 +11,9 @@ I'm a data scientist with a research background in computational biology. I like
 ## Projects
 
 - [Semblance](https://huggingface.co/spaces/yueyvettehao/Semblance) — a multi-agent + MCP system that semantically compares GSEA enrichment results
-- [Nom or Not](https://nom-or-not.vercel.app/) — a web app for tracking whether your cats actually eat
-- [BoardGameFinder](https://huggingface.co/spaces/yueyvettehao/BoardGameFinder) — a RAG-based conversational board game recommender
+- [Nom or Not](https://nom-or-not.vercel.app/) — a full-stack Next.js + Supabase app for tracking whether your cats actually eat
+- [Board Game Finder](https://huggingface.co/spaces/yueyvettehao/BoardGameFinder) — a RAG-based conversational board game recommender
+- [Chinese Folk Music](https://yueyvettehao.github.io/ChineseFolkMusic/) — quantifying and visualizing how northern and southern Chinese folk melodies differ in texture
 - [Data Viz Portfolio](https://datavizgallery-yuehao.streamlit.app/) — a gallery of interactive data visualizations
 
 
