@@ -13,7 +13,7 @@ slug: jianpu-player
 If you grew up learning music in China, you probably read *jianpu* (简谱) — numbered musical notation, where `1`–`7` stand in for do-re-mi instead of dots on a staff. It's compact, easy to scribble, and surprisingly fun to parse with code. So I built a little player that reads jianpu text, lays it out, and plays it back right in the browser.
 
 {{< alert success >}}
-**Update 6/27:** The full project is now live. Visit the [Chinese Folk Music project site](https://yueyvettehao.github.io/ChineseFolkMusic/) to see the regional melody-texture comparison — melodic contours, interval-distribution histograms, summary statistics, and interactive analyzers.
+**Update June 27, 2026:** The full project is now live. Visit the [Chinese Folk Music project site](https://yueyvettehao.github.io/ChineseFolkMusic/) to see the regional melody-texture comparison — melodic contours, interval-distribution histograms, summary statistics, and interactive analyzers.
 {{< /alert >}}
 
 <!--more-->
